@@ -16,12 +16,6 @@
     color: #392f4c;
 }
 
-#footer {
-    position: fixed;
-    bottom: 0;
-    width: 100vw;
-}
-
 .icon-link {
     font-size: 2em;
 }
