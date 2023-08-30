@@ -1,0 +1,10 @@
+@font-face {
+    font-family: "DM Serif Display";
+    src: url("../fonts/DMSerifDisplay-Regular.ttf");
+}
+
+.navbar-brand {
+    font-family: "DM Serif Display";
+    font-style: italic;
+    color: #392f4c;
+}
