@@ -1,6 +1,13 @@
 @font-face {
+    /* License: ../fonts/DMSerifDisplay/OFL.txt */
     font-family: "DM Serif Display";
     src: url("../fonts/DMSerifDisplay-Regular.ttf");
+}
+
+@font-face {
+    /* ../fonts/Assistant/OFL.txt */
+    font-family: "Assistant";
+    src: url("../fonts/Assistant/Assistant-Regular.ttf");
 }
 
 .navbar-brand {
