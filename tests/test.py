@@ -45,5 +45,10 @@ class Tests(TestCase):
     def test_address_present(self):
         self.assertIn("Fjällgatan 32H 981 39 Kiruna", self.browser.page_source)
 
+    def test_opening_hours_present(self):
+        self.assertIn("Öppettider", self.browser.page_source)
+        self.assertIn("Måndag-fredag 10:00-16:00", self.browser.page_source)
+        self.assertIn("Lördag 12:00-15:00", self.browser.page_source)
+    
 if __name__ == '__main__':
     main(verbosity=2)
