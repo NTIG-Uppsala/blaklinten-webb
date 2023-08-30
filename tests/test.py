@@ -47,7 +47,8 @@ class Tests(TestCase):
         self.assertIn("info@ntig-uppsala.github.io", email_address_link.text)
 
     def test_address_present(self):
-        self.assertIn("Fjällgatan 32H 981 39 Kiruna", self.browser.page_source)
+        self.assertIn("Fjällgatan 32H", self.browser.page_source)
+        self.assertIn("981 39 Kiruna", self.browser.page_source)
 
     def test_opening_hours_present(self):
         self.assertIn("Öppettider", self.browser.page_source)
