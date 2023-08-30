@@ -41,6 +41,10 @@ class Tests(TestCase):
     def test_phone_number_present(self):
         phone_number_link = self.browser.find_element(By.XPATH, "//a[@href='tel:0630-555-555']")
         self.assertIn("0630-555-555", phone_number_link.text)
+    
+    def test_email_address_present(self):
+        email_address_link = self.browser.find_element(By.XPATH, "//a[@href='mailto:info@ntig-uppsala.github.io']")
+        self.assertIn("info@ntig-uppsala.github.io", email_address_link.text)
 
     def test_address_present(self):
         self.assertIn("Fjällgatan 32H 981 39 Kiruna", self.browser.page_source)
