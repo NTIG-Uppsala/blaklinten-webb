@@ -38,6 +38,9 @@ class Tests(TestCase):
         self.browser.find_element(By.ID, "facebook-link").click()
         self.assertEqual("https://www.facebook.com/ntiuppsala", self.browser.current_url)
 
+    def test_phone_number_present(self):
+        phone_number_link = self.browser.find_element(By.XPATH, "a[@href='tel:0630-555-555']")
+        self.assertIn("0630-555-555", phone_number_link.text)
 
 if __name__ == '__main__':
     main(verbosity=2)
