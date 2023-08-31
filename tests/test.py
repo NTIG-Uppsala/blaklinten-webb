@@ -38,6 +38,22 @@ class Tests(TestCase):
         self.browser.find_element(By.ID, "facebook-link").click()
         self.assertEqual("https://www.facebook.com/ntiuppsala", self.browser.current_url)
 
+    def test_phone_number_present(self):
+        phone_number_link = self.browser.find_element(By.XPATH, "//a[@href='tel:0630-555-555']")
+        self.assertIn("0630-555-555", phone_number_link.text)
+    
+    def test_email_address_present(self):
+        email_address_link = self.browser.find_element(By.XPATH, "//a[@href='mailto:info@ntig-uppsala.github.io']")
+        self.assertIn("info@ntig-uppsala.github.io", email_address_link.text)
 
+    def test_address_present(self):
+        self.assertIn("Fjällgatan 32H", self.browser.page_source)
+        self.assertIn("981 39 Kiruna", self.browser.page_source)
+
+    def test_opening_hours_present(self):
+        self.assertIn("Öppettider", self.browser.page_source)
+        self.assertIn("Måndag-fredag 10:00-16:00", self.browser.page_source)
+        self.assertIn("Lördag 12:00-15:00", self.browser.page_source)
+    
 if __name__ == '__main__':
     main(verbosity=2)

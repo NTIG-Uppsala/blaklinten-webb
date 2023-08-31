@@ -10,9 +10,18 @@
     src: url("../fonts/Assistant/Assistant-Regular.ttf");
 }
 
+h1,
+h2,
 .navbar-brand {
     font-family: "DM Serif Display";
+}
+
+.navbar-brand {
     font-style: italic;
+}
+
+p,
+.navbar-brand {
     color: #392f4c;
 }
 
