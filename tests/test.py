@@ -23,7 +23,7 @@ class Tests(TestCase):
         self.assertIn("Florist Blåklinten", self.browser.page_source)
 
     def test_footer(self):
-        footer = self.browser.find_element(By.TAG_NAME, "footer")
+        self.browser.find_element(By.TAG_NAME, "footer")
     
     def test_instagram_link(self):
         self.browser.find_element(By.ID, "instagram-link").click()
