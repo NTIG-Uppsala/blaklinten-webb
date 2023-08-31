@@ -54,6 +54,9 @@ class Tests(TestCase):
         self.assertIn("Öppettider", self.browser.page_source)
         self.assertIn("Måndag-fredag 10:00-16:00", self.browser.page_source)
         self.assertIn("Lördag 12:00-15:00", self.browser.page_source)
+
+    def test_content_border(self):
+        self.browser.find_element(By.CLASS_NAME, "border-dark")
     
 if __name__ == '__main__':
     main(verbosity=2)
