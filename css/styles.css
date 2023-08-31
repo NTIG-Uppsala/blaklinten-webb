@@ -21,8 +21,9 @@ h2,
 }
 
 p,
-.navbar-brand {
-    color: #392f4c;
+.navbar-brand,
+a:visited {
+    color: var(--bs-dark);
 }
 
 .icon-link {
