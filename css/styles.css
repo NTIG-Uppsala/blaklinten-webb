@@ -1,3 +1,10 @@
+body {
+    background-image: url("../images/purple_flower.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover  ;
+}
+
 @font-face {
     /* License: ../fonts/DMSerifDisplay/OFL.txt */
     font-family: "DM Serif Display";
