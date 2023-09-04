@@ -29,12 +29,6 @@ h3,
     font-style: italic;
 }
 
-p,
-.navbar-brand,
-a:visited {
-    color: var(--bs-dark);
-}
-
 .icon-link {
     font-size: 2em;
 }
