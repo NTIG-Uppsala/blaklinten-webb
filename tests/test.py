@@ -71,6 +71,15 @@ class Tests(TestCase):
     def test_closed_days_present(self):
         self.assertIn("Stängda dagar", self.browser.page_source)
 
+    def test_fonts(self):
+        h1_font = self.browser.find_element(By.CLASS_NAME, "h1")
+        self.assertEqual(
+            h1_font.value_of_css_property("font-family"), '"DM Serif Display"'
+        )
+        p_fonts = self.browser.find_elements(By.TAG_NAME, "p")
+        for p_font in p_fonts:
+            self.assertEqual(p_font.value_of_css_property("font-family"), "Assistant")
+
 
 if __name__ == "__main__":
     main(verbosity=2)
