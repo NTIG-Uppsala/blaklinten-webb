@@ -80,6 +80,9 @@ class Tests(TestCase):
         for p_font in p_fonts:
             self.assertEqual(p_font.value_of_css_property("font-family"), "Assistant")
 
+    def test_favicon(self):
+        self.browser.find_element(By.XPATH, ".//link[@rel='shortcut icon']")
+
 
 if __name__ == "__main__":
     main(verbosity=2)
