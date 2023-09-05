@@ -30,8 +30,9 @@ class Tests(TestCase):
         self.browser.find_element(By.TAG_NAME, "footer")
 
     def scroll_to_bottom(self):
+        time.sleep(1)
         self.browser.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-        time.sleep(0.5)
+        time.sleep(1)
 
     def test_instagram_link(self):
         self.scroll_to_bottom()
