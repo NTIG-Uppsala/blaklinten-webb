@@ -17,6 +17,11 @@ class Tests(TestCase):
     def tearDown(self):
         self.browser.get("about:blank")
 
+    def test_no_errors(self):
+        log = self.browser.get_log("browser")
+        for message in log:
+            self.assertNotEqual(message["level"], "SEVERE")
+
     def test_company_name_present(self):
         self.assertIn("Florist Blåklinten", self.browser.page_source)
 
