@@ -21,15 +21,14 @@ body {
 
 h1,
 h2,
-h3,
-.navbar-brand {
+h3 {
     font-family: "DM Serif Display";
-}
-
-.navbar-brand {
-    font-style: italic;
 }
 
 .icon-link {
     font-size: 2em;
+}
+
+a.navbar-brand img {
+    height: 3rem;
 }
