@@ -83,6 +83,12 @@ class Tests(TestCase):
     def test_favicon(self):
         self.browser.find_element(By.XPATH, ".//link[@rel='shortcut icon']")
 
+    def test_logo(self):
+        src = self.browser.find_element(
+            By.XPATH, "//a[@class='navbar-brand']/img"
+        ).get_attribute("src")
+        print(src)
+
 
 if __name__ == "__main__":
     main(verbosity=2)
