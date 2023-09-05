@@ -71,7 +71,22 @@ class Tests(TestCase):
         self.assertIn("Lördag 12:00-15:00", self.browser.page_source)
 
     def test_closed_days_present(self):
+        closed_days = [
+            ("Nyårsdagen", "1/1"),
+            ("Trettondedag jul", "6/1"),
+            ("Första maj", "1/5"),
+            ("Sveriges nationaldag", "6/6"),
+            ("Julafton", "24/12"),
+            ("Juldagen", "25/12"),
+            ("Annandag jul", "26/12"),
+            ("Nyårsafton", "31/12"),
+        ]
         self.assertIn("Stängda dagar", self.browser.page_source)
+
+        opening_hour_list = self.browser.find_element(By.ID, "opening-hours")
+        for closed_day in closed_days:
+            self.assertIn(closed_day[0], opening_hour_list.text)
+            self.assertIn(closed_day[1], opening_hour_list.text)
 
     def test_fonts(self):
         h1_font = self.browser.find_element(By.CLASS_NAME, "h1")
