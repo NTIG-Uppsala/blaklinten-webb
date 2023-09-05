@@ -15,6 +15,7 @@ class Tests(TestCase):
         self.browser.get(path.join(getcwd(), "index.html"))
 
     def tearDown(self):
+        _ = self.browser.get_log('browser')
         self.browser.get("about:blank")
 
     def test_no_errors(self):
