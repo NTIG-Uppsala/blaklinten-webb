@@ -87,7 +87,7 @@ class Tests(TestCase):
         src = self.browser.find_element(
             By.XPATH, "//a[@class='navbar-brand']/img"
         ).get_attribute("src")
-        print(src)
+        self.assertIn(".svg", src)
 
 
 if __name__ == "__main__":
