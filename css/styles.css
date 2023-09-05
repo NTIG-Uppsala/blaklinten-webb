@@ -32,3 +32,11 @@ h3 {
 a.navbar-brand img {
     height: 3rem;
 }
+
+#opening-hours {
+    max-width: 300px;
+}
+
+#opening-hours li {
+    padding: 0px 5px;
+}
