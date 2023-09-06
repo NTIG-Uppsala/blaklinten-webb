@@ -82,4 +82,5 @@ interface DayMonth {
     dayOfTheMonth: number
 }
 
+window.setInterval(() => updateCurrentlyOpen(new Date()), 5000);
 updateCurrentlyOpen(new Date());

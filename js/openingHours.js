@@ -66,4 +66,5 @@ function isWeekDay(day) {
 function isSaturday(day) {
     return day == 6;
 }
+window.setInterval(() => updateCurrentlyOpen(new Date()), 5000);
 updateCurrentlyOpen(new Date());
