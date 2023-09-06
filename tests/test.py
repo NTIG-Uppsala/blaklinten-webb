@@ -83,25 +83,33 @@ class Tests(TestCase):
 
     def test_currently_open(self):
         open_text = "Just nu har vi öppet"
-        closed_text = "Stängt just nu"
+        closed_text = "Vi öppnar klockan"
 
         # Monday
-        self.currently_open_helper("2023-09-05T09:59:00", closed_text)
-        self.currently_open_helper("2023-09-05T10:00:00", open_text)
-        self.currently_open_helper("2023-09-05T15:59:00", open_text)
-        self.currently_open_helper("2023-09-05T16:00:00", closed_text)
+        self.currently_open_helper("2023-09-04T09:59:00", closed_text + " 10 idag")
+        self.currently_open_helper("2023-09-04T10:00:00", open_text)
+        self.currently_open_helper("2023-09-04T15:59:00", open_text)
+        self.currently_open_helper("2023-09-04T16:00:00", closed_text + " 10 imorgon")
+
+        # Friday
+        self.currently_open_helper("2023-09-08T09:59:00", closed_text + " 10 idag")
+        self.currently_open_helper("2023-09-08T10:00:00", open_text)
+        self.currently_open_helper("2023-09-08T15:59:00", open_text)
+        self.currently_open_helper("2023-09-08T16:00:00", closed_text + " 12 imorgon")
 
         # Saturday
-        self.currently_open_helper("2023-09-09T11:59:00", closed_text)
+        self.currently_open_helper("2023-09-09T11:59:00", closed_text + " 12 idag")
         self.currently_open_helper("2023-09-09T12:00:00", open_text)
         self.currently_open_helper("2023-09-09T14:59:00", open_text)
-        self.currently_open_helper("2023-09-09T15:00:00", closed_text)
+        self.currently_open_helper("2023-09-09T15:00:00", closed_text + " 10 på måndag")
 
         # Sunday
-        self.currently_open_helper("2023-09-10T13:00:00", closed_text)
+        self.currently_open_helper("2023-09-10T13:00:00", closed_text + " 10 imorgon")
 
-        # Closed day
-        self.currently_open_helper("2023-12-24T13:00:00", closed_text)
+        # Closed days
+        self.currently_open_helper("2023-01-01T13:00:00", closed_text + " 10 imorgon")
+        self.currently_open_helper("2023-01-06T13:00:00", closed_text + " 12 imorgon")
+        self.currently_open_helper("2023-12-24T13:00:00", closed_text + " 10 på onsdag")
 
     def test_closed_days_present(self):
         closed_days = [
