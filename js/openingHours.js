@@ -1,29 +1,60 @@
+const weekdayOpeningTime = 10;
+const weekdayClosingTime = 16;
+const saturdayOpeningTime = 12;
+const saturdayClosingTime = 15;
 function updateCurrentlyOpen(date) {
     let currentlyOpenText = document.getElementById("currently-open-text");
     if (currentlyOpenText == null)
         return;
-    currentlyOpenText.innerText = isCurrentlyOpen(date) ? "Just nu har vi öppet" : "Stängt just nu";
+    let text = "";
+    if (isCurrentlyOpen(date)) {
+        text = "Just nu har vi öppet";
+    }
+    else if (!isClosedDay(date) && !hasOpened(date)) {
+        text = "Vi öppnar klockan " + getOpeningTime(date.getDay()) + " idag";
+    }
+    else {
+        date.setHours(13);
+        let iterations = 0;
+        do {
+            date.setDate(date.getDate() + 1);
+            iterations += 1;
+        } while (!isCurrentlyOpen(date));
+        let day = date.getDay();
+        if (iterations == 1) {
+            text = "Vi öppnar klockan " + getOpeningTime(day) + " imorgon";
+        }
+        else {
+            text = "Vi öppnar klockan " + getOpeningTime(day) + " på " + getDayName(day);
+        }
+    }
+    currentlyOpenText.innerText = text;
 }
 function isCurrentlyOpen(date) {
     let day = date.getDay();
     let hour = date.getHours();
-    let dayMonth = {
-        month: date.getMonth(),
-        dayOfTheMonth: date.getDate()
-    };
-    if (isClosedDay(dayMonth))
+    if (isClosedDay(date))
         return false;
-    if (isWeekDay(day)) {
-        return hour >= 10 && hour < 16;
+    let openingTime = getOpeningTime(day);
+    let closingTime = getClosingTime(day);
+    return hour >= openingTime && hour < closingTime;
+}
+function hasOpened(date) {
+    let day = date.getDay();
+    let hour = date.getHours();
+    if (isClosedDay(date))
+        return false;
+    if (isWeekday(day)) {
+        return hour >= weekdayOpeningTime;
     }
     else if (isSaturday(day)) {
-        return hour >= 12 && hour < 15;
+        return hour >= saturdayOpeningTime;
     }
     else {
         return false;
     }
 }
-function isClosedDay(dayMonth) {
+function isClosedDay(date) {
     const closedDays = [
         {
             month: 0,
@@ -58,13 +89,63 @@ function isClosedDay(dayMonth) {
             dayOfTheMonth: 31
         }
     ];
-    return closedDays.includes(dayMonth);
+    let dayMonth = {
+        month: date.getMonth(),
+        dayOfTheMonth: date.getDate()
+    };
+    if (isSunday(date.getDay()))
+        return true;
+    for (let i = 0; i < closedDays.length; i++) {
+        if (closedDays[i].month == dayMonth.month && closedDays[i].dayOfTheMonth == dayMonth.dayOfTheMonth)
+            return true;
+    }
+    return false;
 }
-function isWeekDay(day) {
+function getOpeningTime(day) {
+    if (isWeekday(day))
+        return weekdayOpeningTime;
+    if (isSaturday(day))
+        return saturdayOpeningTime;
+    return -1;
+}
+function getClosingTime(day) {
+    if (isWeekday(day))
+        return weekdayClosingTime;
+    if (isSaturday(day))
+        return saturdayClosingTime;
+    return -1;
+}
+function isWeekday(day) {
     return day >= 1 && day <= 5;
+}
+function isMonday(day) {
+    return day == 1;
 }
 function isSaturday(day) {
     return day == 6;
+}
+function isSunday(day) {
+    return day == 0;
+}
+function getDayName(day) {
+    switch (day) {
+        case 0:
+            return "söndag";
+        case 1:
+            return "måndag";
+        case 2:
+            return "tisdag";
+        case 3:
+            return "onsdag";
+        case 4:
+            return "torsdag";
+        case 5:
+            return "fredag";
+        case 6:
+            return "lördag";
+        default:
+            return "";
+    }
 }
 window.setInterval(() => updateCurrentlyOpen(new Date()), 5000);
 updateCurrentlyOpen(new Date());

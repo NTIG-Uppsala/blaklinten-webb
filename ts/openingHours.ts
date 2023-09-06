@@ -1,36 +1,76 @@
+const weekdayOpeningTime = 10;
+const weekdayClosingTime = 16;
+const saturdayOpeningTime = 12;
+const saturdayClosingTime = 15;
+
 function updateCurrentlyOpen(date : Date) {
     let currentlyOpenText = document.getElementById("currently-open-text");
     
     if (currentlyOpenText == null)
         return;
     
-    currentlyOpenText.innerText = isCurrentlyOpen(date) ? "Just nu har vi öppet" : "Stängt just nu";
+    let text : string = "";
+
+    if (isCurrentlyOpen(date)) {
+        text = "Just nu har vi öppet";
+    }
+    else if (!isClosedDay(date) && !hasOpened(date)) {
+        text = "Vi öppnar klockan " + getOpeningTime(date.getDay()) + " idag";  
+    }
+    else {
+        date.setHours(13);
+
+        let iterations : number = 0;
+        do {
+            date.setDate(date.getDate() + 1);
+            iterations += 1;
+        } while (!isCurrentlyOpen(date));
+
+        let day : number = date.getDay();
+
+        if (iterations == 1) {
+            text = "Vi öppnar klockan " + getOpeningTime(day) + " imorgon";
+        }
+        else {
+            text = "Vi öppnar klockan " + getOpeningTime(day) + " på " + getDayName(day);
+        }
+    }
+
+    currentlyOpenText.innerText = text;
 }
 
 function isCurrentlyOpen(date: Date) : boolean {
-    let day = date.getDay();
-    let hour = date.getHours();
+    let day : number = date.getDay();
+    let hour : number = date.getHours();
 
-    let dayMonth : DayMonth = {
-        month: date.getMonth(),
-        dayOfTheMonth: date.getDate()
-    }
+    if (isClosedDay(date))
+        return false;
+    
+    let openingTime = getOpeningTime(day);
+    let closingTime = getClosingTime(day);
 
-    if (isClosedDay(dayMonth))
+    return hour >= openingTime && hour < closingTime;
+}
+
+function hasOpened(date: Date) : boolean {
+    let day : number = date.getDay();
+    let hour : number = date.getHours();
+
+    if (isClosedDay(date))
         return false;
 
-    if (isWeekDay(day)) {
-        return hour >= 10 && hour < 16;
+    if (isWeekday(day)) {
+        return hour >= weekdayOpeningTime;
     }
     else if (isSaturday(day)) {
-        return hour >= 12 && hour < 15;
+        return hour >= saturdayOpeningTime;
     }
     else {
         return false;
     }
 }
 
-function isClosedDay(dayMonth: DayMonth) : boolean {
+function isClosedDay(date: Date) : boolean {
     const closedDays : DayMonth[] = [
         {
             month: 0,
@@ -66,15 +106,76 @@ function isClosedDay(dayMonth: DayMonth) : boolean {
         }
     ]
 
-    return closedDays.includes(dayMonth);
+    let dayMonth : DayMonth = {
+        month: date.getMonth(),
+        dayOfTheMonth: date.getDate()
+    }
+
+    if (isSunday(date.getDay()))
+        return true;
+
+    for (let i = 0; i < closedDays.length; i++) {
+        if (closedDays[i].month == dayMonth.month && closedDays[i].dayOfTheMonth == dayMonth.dayOfTheMonth)
+            return true;
+    }
+    return false;
 }
 
-function isWeekDay(day: number) {
+function getOpeningTime(day: number) : number {
+    if (isWeekday(day))
+        return weekdayOpeningTime;
+
+    if (isSaturday(day))
+        return saturdayOpeningTime;
+
+    return -1;
+}
+
+function getClosingTime(day: number) : number {
+    if (isWeekday(day))
+        return weekdayClosingTime;
+
+    if (isSaturday(day))
+        return saturdayClosingTime;
+
+    return -1;
+}
+
+function isWeekday(day: number) : boolean {
     return day >= 1 && day <= 5;
 }
 
-function isSaturday(day: number) {
+function isMonday(day: number) : boolean {
+    return day == 1;
+}
+
+function isSaturday(day: number) : boolean {
     return day == 6;
+}
+
+function isSunday(day: number) : boolean {
+    return day == 0;
+}
+
+function getDayName(day: number) : string {
+    switch (day) {
+        case 0:
+            return "söndag";
+        case 1:
+            return "måndag";
+        case 2:
+            return "tisdag";
+        case 3:
+            return "onsdag";
+        case 4:
+            return "torsdag";
+        case 5:
+            return "fredag";
+        case 6:
+            return "lördag";
+        default:
+            return "";
+    }
 }
 
 interface DayMonth {
