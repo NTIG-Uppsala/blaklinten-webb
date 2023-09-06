@@ -77,6 +77,40 @@ class Tests(TestCase):
         self.assertIn("Måndag-fredag 10:00-16:00", self.browser.page_source)
         self.assertIn("Lördag 12:00-15:00", self.browser.page_source)
 
+    def currently_open_helper(self, date_string: str, expected_result: str):
+        self.browser.execute_script(f'updateCurrentlyOpen(new Date("{date_string}"));')
+        self.assertIn(expected_result, self.browser.page_source)
+
+    def test_currently_open(self):
+        open_text = "Just nu har vi öppet"
+        closed_text = "Vi öppnar klockan"
+
+        # Monday
+        self.currently_open_helper("2023-09-04T09:59:00", closed_text + " 10 idag")
+        self.currently_open_helper("2023-09-04T10:00:00", open_text)
+        self.currently_open_helper("2023-09-04T15:59:00", open_text)
+        self.currently_open_helper("2023-09-04T16:00:00", closed_text + " 10 imorgon")
+
+        # Friday
+        self.currently_open_helper("2023-09-08T09:59:00", closed_text + " 10 idag")
+        self.currently_open_helper("2023-09-08T10:00:00", open_text)
+        self.currently_open_helper("2023-09-08T15:59:00", open_text)
+        self.currently_open_helper("2023-09-08T16:00:00", closed_text + " 12 imorgon")
+
+        # Saturday
+        self.currently_open_helper("2023-09-09T11:59:00", closed_text + " 12 idag")
+        self.currently_open_helper("2023-09-09T12:00:00", open_text)
+        self.currently_open_helper("2023-09-09T14:59:00", open_text)
+        self.currently_open_helper("2023-09-09T15:00:00", closed_text + " 10 på måndag")
+
+        # Sunday
+        self.currently_open_helper("2023-09-10T13:00:00", closed_text + " 10 imorgon")
+
+        # Closed days
+        self.currently_open_helper("2023-01-01T13:00:00", closed_text + " 10 imorgon")
+        self.currently_open_helper("2023-01-06T13:00:00", closed_text + " 12 imorgon")
+        self.currently_open_helper("2023-12-24T13:00:00", closed_text + " 10 på onsdag")
+
     def test_closed_days_present(self):
         closed_days = [
             ("Nyårsdagen", "1/1"),
