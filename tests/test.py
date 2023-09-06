@@ -77,6 +77,32 @@ class Tests(TestCase):
         self.assertIn("Måndag-fredag 10:00-16:00", self.browser.page_source)
         self.assertIn("Lördag 12:00-15:00", self.browser.page_source)
 
+    def currently_open_helper(self, date_string: str, expected_result: str):
+        self.browser.execute_script(f'updateCurrentlyOpen(new Date("{date_string}"));')
+        self.assertIn(expected_result, self.browser.page_source)
+
+    def test_currently_open(self):
+        open_text = "Just nu har vi öppet"
+        closed_text = "Stängt just nu"
+
+        # Monday
+        self.currently_open_helper("2023-09-05T09:59:00", closed_text)
+        self.currently_open_helper("2023-09-05T10:00:00", open_text)
+        self.currently_open_helper("2023-09-05T15:59:00", open_text)
+        self.currently_open_helper("2023-09-05T16:00:00", closed_text)
+
+        # Saturday
+        self.currently_open_helper("2023-09-09T11:59:00", closed_text)
+        self.currently_open_helper("2023-09-09T12:00:00", open_text)
+        self.currently_open_helper("2023-09-09T14:59:00", open_text)
+        self.currently_open_helper("2023-09-09T15:00:00", closed_text)
+
+        # Sunday
+        self.currently_open_helper("2023-09-10T13:00:00", closed_text)
+
+        # Closed day
+        self.currently_open_helper("2023-12-24T13:00:00", closed_text)
+
     def test_closed_days_present(self):
         closed_days = [
             ("Nyårsdagen", "1/1"),
