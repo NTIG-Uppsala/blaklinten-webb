@@ -3,30 +3,33 @@ const weekdayClosingTime = 16;
 const saturdayOpeningTime = 12;
 const saturdayClosingTime = 15;
 
-function updateCurrentlyOpen(date : Date) {
+function updateCurrentlyOpen(date: Date) {
+    let currentlyOpenTextNavbar = document.getElementById("currently-open-text-navbar");
     let currentlyOpenText = document.getElementById("currently-open-text");
-    
+
+    if (currentlyOpenTextNavbar == null)
+        return;
     if (currentlyOpenText == null)
         return;
-    
-    let text : string = "";
+
+    let text: string = "";
 
     if (isCurrentlyOpen(date)) {
         text = "Just nu har vi öppet";
     }
     else if (!isClosedDay(date) && !hasOpened(date)) {
-        text = "Vi öppnar klockan " + getOpeningTime(date.getDay()) + " idag";  
+        text = "Vi öppnar klockan " + getOpeningTime(date.getDay()) + " idag";
     }
     else {
         date.setHours(13);
 
-        let iterations : number = 0;
+        let iterations: number = 0;
         do {
             date.setDate(date.getDate() + 1);
             iterations += 1;
         } while (!isCurrentlyOpen(date));
 
-        let day : number = date.getDay();
+        let day: number = date.getDay();
 
         if (iterations == 1) {
             text = "Vi öppnar klockan " + getOpeningTime(day) + " imorgon";
@@ -35,26 +38,26 @@ function updateCurrentlyOpen(date : Date) {
             text = "Vi öppnar klockan " + getOpeningTime(day) + " på " + getDayName(day);
         }
     }
-
+    currentlyOpenTextNavbar.innerText = text;
     currentlyOpenText.innerText = text;
 }
 
-function isCurrentlyOpen(date: Date) : boolean {
-    let day : number = date.getDay();
-    let hour : number = date.getHours();
+function isCurrentlyOpen(date: Date): boolean {
+    let day: number = date.getDay();
+    let hour: number = date.getHours();
 
     if (isClosedDay(date))
         return false;
-    
+
     let openingTime = getOpeningTime(day);
     let closingTime = getClosingTime(day);
 
     return hour >= openingTime && hour < closingTime;
 }
 
-function hasOpened(date: Date) : boolean {
-    let day : number = date.getDay();
-    let hour : number = date.getHours();
+function hasOpened(date: Date): boolean {
+    let day: number = date.getDay();
+    let hour: number = date.getHours();
 
     if (isClosedDay(date))
         return false;
@@ -70,8 +73,8 @@ function hasOpened(date: Date) : boolean {
     }
 }
 
-function isClosedDay(date: Date) : boolean {
-    const closedDays : DayMonth[] = [
+function isClosedDay(date: Date): boolean {
+    const closedDays: DayMonth[] = [
         {
             month: 0,
             dayOfTheMonth: 1
@@ -106,7 +109,7 @@ function isClosedDay(date: Date) : boolean {
         }
     ]
 
-    let dayMonth : DayMonth = {
+    let dayMonth: DayMonth = {
         month: date.getMonth(),
         dayOfTheMonth: date.getDate()
     }
@@ -121,7 +124,7 @@ function isClosedDay(date: Date) : boolean {
     return false;
 }
 
-function getOpeningTime(day: number) : number {
+function getOpeningTime(day: number): number {
     if (isWeekday(day))
         return weekdayOpeningTime;
 
@@ -131,7 +134,7 @@ function getOpeningTime(day: number) : number {
     return -1;
 }
 
-function getClosingTime(day: number) : number {
+function getClosingTime(day: number): number {
     if (isWeekday(day))
         return weekdayClosingTime;
 
@@ -141,23 +144,23 @@ function getClosingTime(day: number) : number {
     return -1;
 }
 
-function isWeekday(day: number) : boolean {
+function isWeekday(day: number): boolean {
     return day >= 1 && day <= 5;
 }
 
-function isMonday(day: number) : boolean {
+function isMonday(day: number): boolean {
     return day == 1;
 }
 
-function isSaturday(day: number) : boolean {
+function isSaturday(day: number): boolean {
     return day == 6;
 }
 
-function isSunday(day: number) : boolean {
+function isSunday(day: number): boolean {
     return day == 0;
 }
 
-function getDayName(day: number) : string {
+function getDayName(day: number): string {
     switch (day) {
         case 0:
             return "söndag";

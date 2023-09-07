@@ -21,7 +21,8 @@ body {
 
 h1,
 h2,
-h3 {
+h3,
+#currently-open-text-navbar {
     font-family: "DM Serif Display";
 }
 
