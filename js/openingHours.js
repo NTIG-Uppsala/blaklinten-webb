@@ -122,9 +122,6 @@ function getClosingTime(day) {
 function isWeekday(day) {
     return day >= 1 && day <= 5;
 }
-function isMonday(day) {
-    return day == 1;
-}
 function isSaturday(day) {
     return day == 6;
 }

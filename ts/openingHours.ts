@@ -148,10 +148,6 @@ function isWeekday(day: number): boolean {
     return day >= 1 && day <= 5;
 }
 
-function isMonday(day: number): boolean {
-    return day == 1;
-}
-
 function isSaturday(day: number): boolean {
     return day == 6;
 }
