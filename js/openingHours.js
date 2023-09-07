@@ -17,6 +17,8 @@ function updateCurrentlyOpen(date) {
         text = "Vi öppnar klockan " + getOpeningTime(date.getDay()) + " idag";
     }
     else {
+        // set the time of day used to check if open
+        // all open days are open at 13:XX
         date.setHours(13);
         let iterations = 0;
         do {
@@ -121,9 +123,6 @@ function getClosingTime(day) {
 }
 function isWeekday(day) {
     return day >= 1 && day <= 5;
-}
-function isMonday(day) {
-    return day == 1;
 }
 function isSaturday(day) {
     return day == 6;
