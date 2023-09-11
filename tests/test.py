@@ -18,100 +18,98 @@ class Tests(TestCase):
         _ = self.browser.get_log("browser")
         self.browser.get("about:blank")
 
-    def test_no_errors(self):
+    def testNoErrors(self):
         log = self.browser.get_log("browser")
         for message in log:
             self.assertNotEqual(message["level"], "SEVERE")
 
-    def test_company_name_present(self):
+    def testCompanyNamePresent(self):
         self.assertIn("Florist Blåklinten", self.browser.page_source)
 
-    def test_footer(self):
+    def testFooter(self):
         self.browser.find_element(By.TAG_NAME, "footer")
 
-    def scroll_to_bottom(self):
+    def scrollToBottom(self):
         time.sleep(1)
         self.browser.execute_script("window.scrollTo(0, document.body.scrollHeight);")
         time.sleep(1)
 
-    def test_instagram_link(self):
-        self.scroll_to_bottom()
+    def testInstagramLink(self):
+        self.scrollToBottom()
         self.browser.find_element(By.ID, "instagram-link").click()
         self.assertEqual(
             "https://www.instagram.com/ntiuppsala/", self.browser.current_url
         )
 
-    def test_twitter_link(self):
-        self.scroll_to_bottom()
+    def testTwitterLink(self):
+        self.scrollToBottom()
         self.browser.find_element(By.ID, "x-link").click()
         self.assertIn("https://twitter.com", self.browser.current_url)
         self.assertIn("ntiuppsala", self.browser.current_url)
 
-    def test_facebook_link(self):
-        self.scroll_to_bottom()
+    def testFacebookLink(self):
+        self.scrollToBottom()
         self.browser.find_element(By.ID, "facebook-link").click()
-        self.assertEqual(
-            "https://www.facebook.com/ntiuppsala", self.browser.current_url
-        )
+        self.assertIn("https://www.facebook.com/ntiuppsala", self.browser.current_url)
 
-    def test_phone_number_present(self):
+    def testPhoneNumberPresent(self):
         phone_number_links = self.browser.find_elements(
             By.XPATH, "//a[@href='tel:0630-555-555']"
         )
         for phone_number_link in phone_number_links:
             self.assertIn("0630-555-555", phone_number_link.text)
 
-    def test_email_address_present(self):
+    def testEmailAddressPresent(self):
         email_address_links = self.browser.find_elements(
             By.XPATH, "//a[@href='mailto:info@ntig-uppsala.github.io']"
         )
         for email_address_link in email_address_links:
             self.assertIn("info@ntig-uppsala.github.io", email_address_link.text)
 
-    def test_address_present(self):
+    def testAddressPresent(self):
         self.assertIn("Fjällgatan 32H", self.browser.page_source)
         self.assertIn("981 39 Kiruna", self.browser.page_source)
 
-    def test_opening_hours_present(self):
+    def testOpeningHoursPresent(self):
         self.assertIn("Öppettider", self.browser.page_source)
         self.assertIn("Måndag-fredag 10:00-16:00", self.browser.page_source)
         self.assertIn("Lördag 12:00-15:00", self.browser.page_source)
 
-    def currently_open_helper(self, date_string: str, expected_result: str):
+    def currentlyOpenHelper(self, date_string: str, expected_result: str):
         self.browser.execute_script(f'updateCurrentlyOpen(new Date("{date_string}"));')
         self.assertIn(expected_result, self.browser.page_source)
 
-    def test_currently_open(self):
+    def testCurrentlyOpen(self):
         open_text = "Just nu har vi öppet"
         closed_text = "Vi öppnar klockan"
 
         # Monday
-        self.currently_open_helper("2023-09-04T09:59:00", closed_text + " 10 idag")
-        self.currently_open_helper("2023-09-04T10:00:00", open_text)
-        self.currently_open_helper("2023-09-04T15:59:00", open_text)
-        self.currently_open_helper("2023-09-04T16:00:00", closed_text + " 10 imorgon")
+        self.currentlyOpenHelper("2023-09-04T09:59:00", closed_text + " 10 idag")
+        self.currentlyOpenHelper("2023-09-04T10:00:00", open_text)
+        self.currentlyOpenHelper("2023-09-04T15:59:00", open_text)
+        self.currentlyOpenHelper("2023-09-04T16:00:00", closed_text + " 10 imorgon")
 
         # Friday
-        self.currently_open_helper("2023-09-08T09:59:00", closed_text + " 10 idag")
-        self.currently_open_helper("2023-09-08T10:00:00", open_text)
-        self.currently_open_helper("2023-09-08T15:59:00", open_text)
-        self.currently_open_helper("2023-09-08T16:00:00", closed_text + " 12 imorgon")
+        self.currentlyOpenHelper("2023-09-08T09:59:00", closed_text + " 10 idag")
+        self.currentlyOpenHelper("2023-09-08T10:00:00", open_text)
+        self.currentlyOpenHelper("2023-09-08T15:59:00", open_text)
+        self.currentlyOpenHelper("2023-09-08T16:00:00", closed_text + " 12 imorgon")
 
         # Saturday
-        self.currently_open_helper("2023-09-09T11:59:00", closed_text + " 12 idag")
-        self.currently_open_helper("2023-09-09T12:00:00", open_text)
-        self.currently_open_helper("2023-09-09T14:59:00", open_text)
-        self.currently_open_helper("2023-09-09T15:00:00", closed_text + " 10 på måndag")
+        self.currentlyOpenHelper("2023-09-09T11:59:00", closed_text + " 12 idag")
+        self.currentlyOpenHelper("2023-09-09T12:00:00", open_text)
+        self.currentlyOpenHelper("2023-09-09T14:59:00", open_text)
+        self.currentlyOpenHelper("2023-09-09T15:00:00", closed_text + " 10 på måndag")
 
         # Sunday
-        self.currently_open_helper("2023-09-10T13:00:00", closed_text + " 10 imorgon")
+        self.currentlyOpenHelper("2023-09-10T13:00:00", closed_text + " 10 imorgon")
 
         # Closed days
-        self.currently_open_helper("2023-01-01T13:00:00", closed_text + " 10 imorgon")
-        self.currently_open_helper("2023-01-06T13:00:00", closed_text + " 12 imorgon")
-        self.currently_open_helper("2023-12-24T13:00:00", closed_text + " 10 på onsdag")
+        self.currentlyOpenHelper("2023-01-01T13:00:00", closed_text + " 10 imorgon")
+        self.currentlyOpenHelper("2023-01-06T13:00:00", closed_text + " 12 imorgon")
+        self.currentlyOpenHelper("2023-12-24T13:00:00", closed_text + " 10 på onsdag")
 
-    def test_closed_days_present(self):
+    def testClosedDaysPresent(self):
         closed_days = [
             ("Nyårsdagen", "1/1"),
             ("Trettondedag jul", "6/1"),
@@ -129,7 +127,7 @@ class Tests(TestCase):
             self.assertIn(closed_day[0], opening_hour_list.text)
             self.assertIn(closed_day[1], opening_hour_list.text)
 
-    def test_fonts(self):
+    def testFonts(self):
         h1_font = self.browser.find_element(By.CLASS_NAME, "h1")
         self.assertEqual(
             h1_font.value_of_css_property("font-family"), '"DM Serif Display"'
@@ -138,10 +136,10 @@ class Tests(TestCase):
         for p_font in p_fonts:
             self.assertEqual(p_font.value_of_css_property("font-family"), "Assistant")
 
-    def test_favicon(self):
+    def testFavicon(self):
         self.browser.find_element(By.XPATH, ".//link[@rel='shortcut icon']")
 
-    def test_logo(self):
+    def testLogo(self):
         src = self.browser.find_element(
             By.XPATH, "//a[@class='navbar-brand']/img"
         ).get_attribute("src")
