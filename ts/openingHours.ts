@@ -7,12 +7,13 @@ function updateCurrentlyOpen(date: Date) {
     let currentlyOpenTextNavbar = document.getElementById("currently-open-text-navbar");
     let currentlyOpenText = document.getElementById("currently-open-text");
 
-    if (currentlyOpenTextNavbar == null)
+    if (currentlyOpenTextNavbar == null) {
         return;
-    if (currentlyOpenText == null)
+    }
+    if (currentlyOpenText == null) {
         return;
-
-    let text: string = "";
+    }
+    let text: string = ""; // if current time is openingHours, then text = "just nu har vi öppet"
 
     if (isCurrentlyOpen(date)) {
         text = "Just nu har vi öppet";
@@ -25,7 +26,7 @@ function updateCurrentlyOpen(date: Date) {
         // all open days are open at 13:XX
         date.setHours(13);
 
-        let iterations: number = 0;
+        let iterations: number = 0; // checks for how long the store is open
         do {
             date.setDate(date.getDate() + 1);
             iterations += 1;
@@ -33,7 +34,7 @@ function updateCurrentlyOpen(date: Date) {
 
         let day: number = date.getDay();
 
-        if (iterations == 1) {
+        if (iterations == 1) { // if store closed, tells next coming opening time
             text = "Vi öppnar klockan " + getOpeningTime(day) + " imorgon";
         }
         else {
@@ -48,9 +49,9 @@ function isCurrentlyOpen(date: Date): boolean {
     let day: number = date.getDay();
     let hour: number = date.getHours();
 
-    if (isClosedDay(date))
+    if (isClosedDay(date)) {
         return false;
-
+    }
     let openingTime = getOpeningTime(day);
     let closingTime = getClosingTime(day);
 
@@ -61,17 +62,20 @@ function hasOpened(date: Date): boolean {
     let day: number = date.getDay();
     let hour: number = date.getHours();
 
-    if (isClosedDay(date))
+    if (isClosedDay(date)) {
         return false;
-
+    }
     if (isWeekday(day)) {
         return hour >= weekdayOpeningTime;
     }
     else if (isSaturday(day)) {
         return hour >= saturdayOpeningTime;
     }
+    else if (isSunday(date.getDay())) {
+        return true;
+    }
     else {
-        return false;
+        return false; // fail save
     }
 }
 
@@ -116,9 +120,6 @@ function isClosedDay(date: Date): boolean {
         dayOfTheMonth: date.getDate()
     }
 
-    if (isSunday(date.getDay()))
-        return true;
-
     for (let i = 0; i < closedDays.length; i++) {
         if (closedDays[i].month == dayMonth.month && closedDays[i].dayOfTheMonth == dayMonth.dayOfTheMonth)
             return true;
@@ -127,22 +128,22 @@ function isClosedDay(date: Date): boolean {
 }
 
 function getOpeningTime(day: number): number {
-    if (isWeekday(day))
+    if (isWeekday(day)) {
         return weekdayOpeningTime;
-
-    if (isSaturday(day))
+    }
+    if (isSaturday(day)) {
         return saturdayOpeningTime;
-
+    }
     return -1;
 }
 
 function getClosingTime(day: number): number {
-    if (isWeekday(day))
+    if (isWeekday(day)) {
         return weekdayClosingTime;
-
-    if (isSaturday(day))
+    }
+    if (isSaturday(day)) {
         return saturdayClosingTime;
-
+    }
     return -1;
 }
 
