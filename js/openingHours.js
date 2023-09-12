@@ -56,6 +56,8 @@ function hasOpened(date) {
     else if (isSaturday(day)) {
         return hour >= saturdayOpeningTime;
     }
+    else if (isSunday(date.getDay()))
+        return true;
     else {
         return false;
     }
@@ -99,8 +101,7 @@ function isClosedDay(date) {
         month: date.getMonth(),
         dayOfTheMonth: date.getDate()
     };
-    if (isSunday(date.getDay()))
-        return true;
+
     for (let i = 0; i < closedDays.length; i++) {
         if (closedDays[i].month == dayMonth.month && closedDays[i].dayOfTheMonth == dayMonth.dayOfTheMonth)
             return true;
