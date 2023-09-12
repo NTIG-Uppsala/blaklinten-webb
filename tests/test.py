@@ -109,6 +109,9 @@ class Tests(TestCase):
         self.currentlyOpenHelper("2023-01-06T13:00:00", closed_text + " 12 imorgon")
         self.currentlyOpenHelper("2023-12-24T13:00:00", closed_text + " 10 på onsdag")
 
+        # Following test only tests dates in 2023 and may not be the same every year
+        self.currentlyOpenHelper("2023-04-30T13:00:00", closed_text + " 10 på tisdag")
+
     def testClosedDaysPresent(self):
         closed_days = [
             ("Nyårsdagen", "1/1"),
