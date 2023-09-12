@@ -22,15 +22,12 @@ function updateCurrentlyOpen(date: Date) {
         text = "Vi öppnar klockan " + getOpeningTime(date.getDay()) + " idag";
     }
     else {
-        // set the time of day used to check if open
-        // all open days are open at 13:XX
-        date.setHours(13);
 
         let iterations: number = 0; // checks for how long the store is open
         do {
             date.setDate(date.getDate() + 1);
             iterations += 1;
-        } while (!isCurrentlyOpen(date));
+        } while (isClosedDay(date));
 
         let day: number = date.getDay();
 
@@ -71,15 +68,15 @@ function hasOpened(date: Date): boolean {
     else if (isSaturday(day)) {
         return hour >= saturdayOpeningTime;
     }
-    else if (isSunday(date.getDay())) {
-        return true;
-    }
     else {
         return false; // fail safe, if this code executes, dont crash. 
     }
 }
 // the special closed days
 function isClosedDay(date: Date): boolean {
+    if (isSunday(date.getDay())) {
+        return true;
+    }
     const closedDays: DayMonth[] = [
         {
             month: 0,
