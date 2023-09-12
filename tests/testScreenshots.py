@@ -11,17 +11,18 @@ class Tests(TestCase):
     @classmethod
     def setUpClass(cls):
         cls.browser = webdriver.Chrome()
-        chr_options = Options()
-
-        chr_options.headless = True
-
-        cls.browser = webdriver.Chrome(options=chr_options)
 
     def setUp(self):
         self.browser.get(path.join(getcwd(), "index.html"))
 
     def tearDown(self):
+        _ = self.browser.get_log("browser")
         self.browser.get("about:blank")
+
+    def testNoErrors(self):
+        log = self.browser.get_log("browser")
+        for message in log:
+            self.assertNotEqual(message["level"], "SEVERE")
 
     def screenshotHelper(
         self, width, height
@@ -37,7 +38,8 @@ class Tests(TestCase):
             time.sleep(1)
             self.browser.save_screenshot(f"screenshots/{width}-{height}-{i}.png")
 
-    def testScreenshots(self):  # function that defines resolution and takes screenshot.
+    def testScreenshot(self):
+        # function that defines resolution and takes screenshot.
         if not path.exists("screenshots/"):
             mkdir("screenshots/")
         # phones and tablets
