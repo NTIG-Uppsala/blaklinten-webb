@@ -1,8 +1,4 @@
 body {
-    background-image: url("../images/purple_flower.png");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
     backdrop-filter: blur(7px);
     min-height: 100vh;
 }
@@ -35,9 +31,23 @@ a.navbar-brand img {
 }
 
 #opening-hours {
-    max-width: 300px;
+    max-width: 400px;
 }
 
-#list{
-    font-size:0.9rem;
+#list {
+    font-size: 0.9rem;
+    background-color: white;
+}
+
+.header {
+    background-image: url(../images/purple_flower.png);
+    /* fixa för telefon */
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+}
+
+
+#fp-h {
+    padding-top: 25vh;
 }

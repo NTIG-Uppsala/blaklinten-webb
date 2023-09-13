@@ -2,7 +2,6 @@
 <html lang="sv">
 
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Florist Blåklinten</title>
@@ -10,6 +9,7 @@
     <link rel="stylesheet" href="css/custom.css">
     <link rel="stylesheet" href="css/styles.css">
     <script src="https://kit.fontawesome.com/0b2436849d.js" crossorigin="anonymous"></script>
+
 </head>
 
 <body class="d-flex flex-column">
@@ -18,40 +18,99 @@
             <a href="#" class="navbar-brand">
                 <img src="images/logo.svg" alt="Florist Blåklintens logotyp">
             </a>
-            <!-- <ul class="nav-item">
-                <a class="nav-link" href="#hittaoss" id="findUsButton">Hitta hit</a>
-            </ul>
-            <ul class="nav-item">
-                <a class="nav-link" href="#hittaoss" id="findUsButton">Öppettider</a>
-            </ul>
-            <span id="currentlyOpenTextNavbar" class="text-center my-auto me-2 fs-4 text-secondary">
-
-            </span> -->
         </div>
     </div>
 
-    <div class="container my-auto mx-auto">
-        <h1 class="h1 text-center text-secondary">Florist Blåklinten</h1>
 
-        <p class="text-center text-light ">
-            Boka konsulttid genom att ringa <a class="link-secondary" href="tel:0630-555-555">0630-555-555</a><br>
-            Du kan även mejla
-            <a class="link-secondary" href="mailto:info@ntig-uppsala.github.io">info@ntig-uppsala.github.io</a>
-        </p>
-        <p class="text-center my-auto me-2 fs-4 text-secondary" id="currently-open-text">Just nu: <span
-                class="text-success">Öppet</span>
-        </p>
+    <div class="header">
+        <div id="fp-h" class="container mx-auto my-auto">
+            <h1 class="h1 text-center text-secondary">Florist Blåklinten</h1>
 
+            <p class="text-center text-light fs-5 ">
+                Boka konsulttid genom att ringa <a class="link-secondary" href="tel:0630-555-555">0630-555-555</a><br>
+                Du kan även mejla
+                <a class="link-secondary" href="mailto:info@ntig-uppsala.github.io">info@ntig-uppsala.github.io</a>
+            </p>
+            <p class="text-center my-auto me-2 fs-3 text-secondary" id="currently-open-text">Just nu: <span
+                    class="text-success">Öppet</span>
+            </p>
+
+        </div>
     </div>
 
 
+    <div class="container my-5">
+        <div class="row justify-content-end">
+            <div class="col-md-6">
+                <div id="listPos" class="container">
+                    <h2 class="h2 text-center text-secondary my-5 ">Öppettider</h2>
+                    <p class="text-center text-black fs-5">
+                        Måndag-fredag 10:00-16:00
+                        <br> <br>
+                        Lördag 12:00-15:00
+                        <br> <br>
+                        Söndag <span class="text-danger">stängt</span>
+                    </p>
+                    <p id="currently-open-text" class="text-center text-light">
+                </div>
+
+            </div>
+
+
+            <div class="col-md-6">
+                <div id="listPos" class="container">
+                    <h2 class="h2 text-center text-secondary">Stängda dagar</h2>
+                    <ul class="list-unstyled text-start text-black fs-5">
+                        <li>
+                            Nyårsdagen
+                            <span class="float-end">1/1</span>
+                            <hr class="my-1">
+                        </li>
+                        <li>
+                            Trettondedag jul
+                            <span class="float-end">6/1</span>
+                            <hr class="my-1">
+                        </li>
+                        <li>
+                            Första maj
+                            <span class="float-end">1/5</span>
+                            <hr class="my-1">
+                        </li>
+                        <li>
+                            Sveriges nationaldag
+                            <span class="float-end">6/6</span>
+                            <hr class="my-1">
+                        </li>
+                        <li>
+                            Julafton
+                            <span class="float-end">24/12</span>
+                            <hr class="my-1">
+                        </li>
+                        <li>
+                            Juldagen
+                            <span class="float-end">25/12</span>
+                            <hr class="my-1">
+                        </li>
+                        <li>
+                            Annandag jul
+                            <span class="float-end">26/12</span>
+                            <hr class="my-1">
+                        </li>
+                        <li>
+                            Nyårsafton
+                            <span class="float-end">31/12</span>
+                            <hr class="my-1">
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+
+        </div>
 
 
 
-
-
-
-    <!-- <div class="container-md my-5">
+        <!-- <div class="container-md my-5">
         <div class="border border-primary border-3 p-2 bg-primary bg-opacity-75 py-4">
             <h1 class="h1 text-center text-secondary">Florist Blåklinten</h1>
 
@@ -61,14 +120,7 @@
                 <a class="link-secondary" href="mailto:info@ntig-uppsala.github.io">info@ntig-uppsala.github.io</a>
             </p>
 
-            <h2 class="h2 text-center text-secondary">Öppettider</h2>
-            <p class="text-center text-light">
-                Måndag-fredag 10:00-16:00
-                <br>
-                Lördag 12:00-15:00
-            </p>
-            <p id="currently-open-text" class="text-center text-light">
-
+           
             </p>
             <h2 class="h2 text-center text-secondary">Adress</h2>
             <p class="text-center text-light">
@@ -83,55 +135,7 @@
                     referrerpolicy="no-referrer-when-downgrade"></iframe>
             </p>
 
-            <div id="list">
-                <h3 class="text-center text-secondary" style="">Stängda dagar</h3>
-                <div class="d-flex justify-content-center">
-                    <div id="opening-hours" class="flex-grow-1">
-                        <ul class="list-unstyled text-start text-light">
-                            <li>
-                                Nyårsdagen
-                                <span class="float-end">1/1</span>
-                                <hr class="my-1">
-                            </li>
-                            <li>
-                                Trettondedag jul
-                                <span class="float-end">6/1</span>
-                                <hr class="my-1">
-                            </li>
-                            <li>
-                                Första maj
-                                <span class="float-end">1/5</span>
-                                <hr class="my-1">
-                            </li>
-                            <li>
-                                Sveriges nationaldag
-                                <span class="float-end">6/6</span>
-                                <hr class="my-1">
-                            </li>
-                            <li>
-                                Julafton
-                                <span class="float-end">24/12</span>
-                                <hr class="my-1">
-                            </li>
-                            <li>
-                                Juldagen
-                                <span class="float-end">25/12</span>
-                                <hr class="my-1">
-                            </li>
-                            <li>
-                                Annandag jul
-                                <span class="float-end">26/12</span>
-                                <hr class="my-1">
-                            </li>
-                            <li>
-                                Nyårsafton
-                                <span class="float-end">31/12</span>
-                                <hr class="my-1">
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+           
 
         </div>
     </div>
@@ -157,7 +161,7 @@
 
     </footer> -->
 
-    <script src="js/openingHours.js"></script>
+        <script src="js/openingHours.js"></script>
 </body>
 
 </html>
