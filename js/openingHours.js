@@ -12,7 +12,7 @@ function updateCurrentlyOpen(date) {
         text = 'Just nu: <span class="text-success">Öppet</span>';
     }
     else if (!isClosedDay(date) && !hasOpened(date)) {
-        text = "Vi öppnar klockan " + getOpeningTime(date.getDay()) + " idag";
+        text = ' <span class="text-warning">Vi öppnar klockan ' + getOpeningTime(date.getDay()) + " idag </span>";
     }
     else {
         // set the time of day used to check if open
