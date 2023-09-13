@@ -80,7 +80,7 @@ class Tests(TestCase):
         self.assertIn(expected_result, self.browser.page_source)
 
     def testCurrentlyOpen(self):
-        open_text = "Just nu har vi öppet"
+        open_text = "Just nu: "  # syns bara då det är öppet
         closed_text = "Vi öppnar klockan"
 
         # Monday

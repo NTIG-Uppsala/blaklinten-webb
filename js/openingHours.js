@@ -3,15 +3,13 @@ const weekdayClosingTime = 16;
 const saturdayOpeningTime = 12;
 const saturdayClosingTime = 15;
 function updateCurrentlyOpen(date) {
-    let currentlyOpenTextNavbar = document.getElementById("currently-open-text-navbar");
     let currentlyOpenText = document.getElementById("currently-open-text");
-    if (currentlyOpenTextNavbar == null)
-        return;
+
     if (currentlyOpenText == null)
         return;
     let text = "";
     if (isCurrentlyOpen(date)) {
-        text = "Just nu har vi öppet";
+        text = 'Just nu: <span class="text-success">Öppet</span>';
     }
     else if (!isClosedDay(date) && !hasOpened(date)) {
         text = "Vi öppnar klockan " + getOpeningTime(date.getDay()) + " idag";
@@ -33,8 +31,7 @@ function updateCurrentlyOpen(date) {
             text = "Vi öppnar klockan " + getOpeningTime(day) + " på " + getDayName(day);
         }
     }
-    currentlyOpenTextNavbar.innerText = text;
-    currentlyOpenText.innerText = text;
+    currentlyOpenText.innerHTML = text;
 }
 function isCurrentlyOpen(date) {
     let day = date.getDay();
