@@ -26,14 +26,14 @@
         <div id="frontpageHeader" class="container mx-auto my-auto">
             <h1 class="h1 text-center text-secondary">Florist Blåklinten</h1>
 
-            <p class="text-center text-light fs-5 ">
+            <div class="text-center text-light mainInfo">
                 Boka konsulttid genom att ringa <a class="link-secondary" href="tel:0630-555-555">0630-555-555</a><br>
                 Du kan även mejla
                 <a class="link-secondary" href="mailto:info@ntig-uppsala.github.io">info@ntig-uppsala.github.io</a>
-            </p>
-            <p class="text-center my-auto me-2 fs-3 text-secondary" id="currently-open-text">Just nu: <span
+            </div>
+            <div class="text-center my-auto me-2 text-secondary liveOpen" id="currently-open-text">Just nu: <span
                     class="text-success">Öppet</span>
-            </p>
+            </div>
 
         </div>
     </div>
@@ -42,9 +42,9 @@
     <div class="container my-5 py-5">
         <div class="row justify-content-end">
             <div class="col-md-6" id="marginOpenHours">
-                <div class="container w-50">
+                <div class="container" id="openHoursContainer">
                     <h2 class="h2 text-center text-secondary my-5 ">Öppettider</h2>
-                    <div class="text-black fs-5">
+                    <div class="text-black" id="openHours">
                         <p>Måndag-fredag <span class="float-end"> 10:00-16:00 </span></p>
                         <p>Lördag <span class="float-end"> 12:00-15:00 </span></p>
                         <p>Söndag <span class="float-end text-danger"> Stängt </span></p>
@@ -113,8 +113,8 @@
         <div class="container my-5 py-3">
             <div class="row justify-content-center">
                 <div class="col-md-6">
-                    <div class="container" id="designInfo">
-                        <h2 class="h2 text-center text-primary"><br><br><br>Vill du designa själv?<br>
+                    <div class="container center-text" id="designInfo">
+                        <h2 class="h2 text-center text-primary">Vill du designa själv?
                         </h2>
                         <h4 class="h4 text-center text-primary">Ring eller maila oss!</h4>
                         <p class="text-center text-light">
