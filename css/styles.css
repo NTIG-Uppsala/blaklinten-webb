@@ -15,6 +15,7 @@ body {
     src: url("../fonts/Assistant/Assistant-Regular.ttf");
 }
 
+/* So all h have same font */
 h1,
 h2,
 h3,
@@ -41,36 +42,35 @@ a.navbar-brand img {
 
 .header {
     background-image: url(../images/purple_flower.png);
-    /* fixa för telefon */
     background-repeat: no-repeat;
     background-size: cover;
     height: 100vh;
 }
 
 
-#frontpageHeader{
+#frontpageHeader {
     padding-top: 25vh;
 }
 
-#backgroundInfo{
-    background-color:#cbcaff;
-    width:100%;
+#backgroundInfo {
+    background-color: #cbcaff;
+    width: 100%;
 }
 
-#openHours{
+#openHours {
     font-size: 20px;
 }
 
-#openHoursContainer{
-    width:50%;
+#openHoursContainer {
+    width: 50%;
 }
 
-.mainInfo{
-    font-size:20px;
+.mainInfo {
+    font-size: 20px;
 }
 
-.liveOpen{
-    font-size:23px;
+.liveOpen {
+    font-size: 23px;
 }
 
 .center-text {
@@ -81,59 +81,63 @@ a.navbar-brand img {
     height: 100%;
 }
 
+/* For different resolution */
 @media (max-width:1410px) and (min-width:500px) {
-    iframe{
-        width:300px;
-        height:300px;
+    iframe {
+        width: 300px;
+        height: 300px;
     }
 
-    #openHoursContainer{
-        width:75%;
-    }
-}
-    
-
-@media (max-width:800px){
-    #marginFindUs{
-        margin-top:100px;
-        margin-bottom:100px;
-    }
-    #marginOpenHours{
-        margin-bottom:100px;
+    #openHoursContainer {
+        width: 75%;
     }
 }
 
+/* For different resolution */
+@media (max-width:800px) {
+    #marginFindUs {
+        margin-top: 100px;
+        margin-bottom: 100px;
+    }
+
+    #marginOpenHours {
+        margin-bottom: 100px;
+    }
+}
+
+/* For different resolution */
 @media (max-width:500px) {
-    iframe{
-        width:200px;
-        height:200px;
+    iframe {
+        width: 200px;
+        height: 200px;
     }
 
-    #openHoursContainer{
-        width:100%;
+    #openHoursContainer {
+        width: 100%;
     }
-    
+
 }
 
+/* For different resolution */
 @media (max-width:400px) {
-   .mainInfo{
-    font-size:14px;
-   }
-
-   .liveOpen{
-    font-size: 21px;
-   }
-}
-
-@media (max-width:300px) {
-    iframe{
-        width:150px;
-        height:150px;
+    .mainInfo {
+        font-size: 14px;
     }
 
-    #openHours{
+    .liveOpen {
+        font-size: 21px;
+    }
+}
+
+/* For different resolution */
+@media (max-width:300px) {
+    iframe {
+        width: 150px;
+        height: 150px;
+    }
+
+    #openHours {
         font-size: 16px;
     }
-    
-}
 
+}

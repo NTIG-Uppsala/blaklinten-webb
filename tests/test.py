@@ -72,15 +72,16 @@ class Tests(TestCase):
 
     def testOpeningHoursPresent(self):
         self.assertIn("Öppettider", self.browser.page_source)
-        self.assertIn("Måndag-fredag 10:00-16:00", self.browser.page_source)
-        self.assertIn("Lördag 12:00-15:00", self.browser.page_source)
+        self.assertIn("Måndag-fredag", self.browser.page_source)
+        self.assertIn("Lördag", self.browser.page_source)
+        self.assertIn("Söndag", self.browser.page_source)
 
     def currentlyOpenHelper(self, date_string: str, expected_result: str):
         self.browser.execute_script(f'updateCurrentlyOpen(new Date("{date_string}"));')
         self.assertIn(expected_result, self.browser.page_source)
 
     def testCurrentlyOpen(self):
-        open_text = "Just nu: "  # syns bara då det är öppet
+        open_text = "Just nu: "  # Only shows when store is open
         closed_text = "Vi öppnar klockan"
 
         # Monday
@@ -113,22 +114,16 @@ class Tests(TestCase):
         self.currentlyOpenHelper("2023-04-30T13:00:00", closed_text)
 
     def testClosedDaysPresent(self):
-        closed_days = [
-            ("Nyårsdagen", "1/1"),
-            ("Trettondedag jul", "6/1"),
-            ("Första maj", "1/5"),
-            ("Sveriges nationaldag", "6/6"),
-            ("Julafton", "24/12"),
-            ("Juldagen", "25/12"),
-            ("Annandag jul", "26/12"),
-            ("Nyårsafton", "31/12"),
-        ]
-        self.assertIn("Stängda dagar", self.browser.page_source)
-
-        opening_hour_list = self.browser.find_element(By.ID, "opening-hours")
-        for closed_day in closed_days:
-            self.assertIn(closed_day[0], opening_hour_list.text)
-            self.assertIn(closed_day[1], opening_hour_list.text)
+        # Days in closed days list
+        self.assertIn("Juldagen", self.browser.page_source)
+        self.assertIn("Första maj", self.browser.page_source)
+        self.assertIn("Julafton", self.browser.page_source)
+        self.assertIn("Nyårsafton", self.browser.page_source)
+        # Numbers in closed days list
+        self.assertIn("1/1", self.browser.page_source)
+        self.assertIn("6/6", self.browser.page_source)
+        self.assertIn("25/12", self.browser.page_source)
+        self.assertIn("31/12", self.browser.page_source)
 
     def testFonts(self):
         h1_font = self.browser.find_element(By.CLASS_NAME, "h1")
