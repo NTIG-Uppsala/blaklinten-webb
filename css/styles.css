@@ -73,6 +73,7 @@ a.navbar-brand img {
     font-size: 23px;
 }
 
+
 .center-text {
     text-align: center;
     display: flex;
@@ -97,12 +98,21 @@ a.navbar-brand img {
 @media (max-width:800px) {
     #marginFindUs {
         margin-top: 100px;
-        margin-bottom: 100px;
+        margin-bottom: 90px;
     }
 
     #marginOpenHours {
         margin-bottom: 100px;
     }
+
+    #designInfo{
+        margin-top:70px;
+    }
+
+    #closedDaysInfo{
+        margin-bottom:80px;
+    }
+    
 }
 
 /* For different resolution */
