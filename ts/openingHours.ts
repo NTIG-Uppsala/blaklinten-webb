@@ -22,15 +22,12 @@ function updateCurrentlyOpen(date: Date) {
         text = "Vi öppnar klockan " + getOpeningTime(date.getDay()) + " idag";
     }
     else {
-        // set the time of day used to check if open
-        // all open days are open at 13:XX
-        date.setHours(13);
 
         let iterations: number = 0; // checks for how long the store is open
         do {
             date.setDate(date.getDate() + 1);
             iterations += 1;
-        } while (!isCurrentlyOpen(date));
+        } while (isClosedDay(date));
 
         let day: number = date.getDay();
 
@@ -48,7 +45,7 @@ function updateCurrentlyOpen(date: Date) {
 function isCurrentlyOpen(date: Date): boolean {
     let day: number = date.getDay();
     let hour: number = date.getHours();
-
+    // checks if store is open
     if (isClosedDay(date)) {
         return false;
     }
@@ -61,7 +58,7 @@ function isCurrentlyOpen(date: Date): boolean {
 function hasOpened(date: Date): boolean {
     let day: number = date.getDay();
     let hour: number = date.getHours();
-
+    // checks if weekdays, saturday or sunday or closed.
     if (isClosedDay(date)) {
         return false;
     }
@@ -71,15 +68,15 @@ function hasOpened(date: Date): boolean {
     else if (isSaturday(day)) {
         return hour >= saturdayOpeningTime;
     }
-    else if (isSunday(date.getDay())) {
-        return true;
-    }
     else {
-        return false; // fail save
+        return false; // fail safe, if this code executes, dont crash. 
     }
 }
-
+// the special closed days
 function isClosedDay(date: Date): boolean {
+    if (isSunday(date.getDay())) {
+        return true;
+    }
     const closedDays: DayMonth[] = [
         {
             month: 0,
@@ -119,7 +116,7 @@ function isClosedDay(date: Date): boolean {
         month: date.getMonth(),
         dayOfTheMonth: date.getDate()
     }
-
+    // checks month and day to verify if closed day.
     for (let i = 0; i < closedDays.length; i++) {
         if (closedDays[i].month == dayMonth.month && closedDays[i].dayOfTheMonth == dayMonth.dayOfTheMonth)
             return true;
@@ -144,7 +141,7 @@ function getClosingTime(day: number): number {
     if (isSaturday(day)) {
         return saturdayClosingTime;
     }
-    return -1;
+    return -1;  // there is no negative days.
 }
 
 function isWeekday(day: number): boolean {
@@ -184,6 +181,6 @@ interface DayMonth {
     month: number,
     dayOfTheMonth: number
 }
-
+// updates the website every 5 seconds
 window.setInterval(() => updateCurrentlyOpen(new Date()), 5000);
 updateCurrentlyOpen(new Date());
