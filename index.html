@@ -23,7 +23,7 @@
 
 
     <div class="header">
-        <div id="fp-h" class="container mx-auto my-auto">
+        <div id="frontpageHeader" class="container mx-auto my-auto">
             <h1 class="h1 text-center text-secondary">Florist Blåklinten</h1>
 
             <p class="text-center text-light fs-5 ">
@@ -39,26 +39,24 @@
     </div>
 
 
-    <div class="container my-5">
+    <div class="container my-5 py-5">
         <div class="row justify-content-end">
-            <div class="col-md-6">
-                <div id="listPos" class="container">
+            <div class="col-md-6" id="marginOpenHours">
+                <div class="container w-50">
                     <h2 class="h2 text-center text-secondary my-5 ">Öppettider</h2>
-                    <p class="text-center text-black fs-5">
-                        Måndag-fredag 10:00-16:00
-                        <br> <br>
-                        Lördag 12:00-15:00
-                        <br> <br>
-                        Söndag <span class="text-danger">stängt</span>
-                    </p>
-                    <p id="currently-open-text" class="text-center text-light">
+                    <div class="text-black fs-5">
+                        <p>Måndag-fredag <span class="float-end"> 10:00-16:00 </span></p>
+                        <p>Lördag <span class="float-end"> 12:00-15:00 </span></p>
+                        <p>Söndag <span class="float-end text-danger"> Stängt </span></p>
+                        <p id="currently-open-text" class="text-center text-light"></p>
+                    </div>
                 </div>
 
             </div>
 
 
             <div class="col-md-6">
-                <div id="listPos" class="container">
+                <div class="container">
                     <h2 class="h2 text-center text-secondary">Stängda dagar</h2>
                     <ul class="list-unstyled text-start text-black fs-5">
                         <li>
@@ -106,11 +104,73 @@
             </div>
 
 
+
         </div>
 
+    </div>
+
+    <div id="backgroundInfo">
+        <div class="container my-5 py-3">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="container" id="designInfo">
+                        <h2 class="h2 text-center text-primary"><br><br><br>Vill du designa själv?<br>
+                        </h2>
+                        <h4 class="h4 text-center text-primary">Ring eller maila oss!</h4>
+                        <p class="text-center text-light">
+                            <a class="link-primary" href="tel:0630-555-555"> <i class="fa-solid fa-phone">&nbsp;</i>
+                                0630-555-555</a>
+                            <br>
+                            <a class="link-primary" href="mailto:info@ntig-uppsala.github.io"><i
+                                    class="fa-solid fa-envelope">&nbsp;</i>info@ntig-uppsala.github.io</a>
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-6" id="marginFindUs">
+                    <div class="container">
+                        <h2 class="h2 text-center text-primary ">Hitta hit</h2>
+                        <div class="text-center text-black fs-5 my-3">
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1503.2561387938995!2d20.23140837816331!3d67.8660575009758!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x45d0ba6368d7c9a3%3A0xe3887ef038c559b0!2sFj%C3%A4llgatan%2032%2C%20981%2039%20Kiruna!5e0!3m2!1ssv!2sse!4v1694676651494!5m2!1ssv!2sse"
+                                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            <p class="text-center text-primary">
+                                Fjällgatan 32H
+                                <br>
+                                981 39 Kiruna
+                                <br>
+                                <br>
+                            </p>
+                        </div>
+                        <p id="currently-open-text" class="text-center text-light">
+                    </div>
+
+                </div>
 
 
-        <!-- <div class="container-md my-5">
+
+
+            </div>
+
+        </div>
+    </div>
+
+    <footer class="bg-primary text-center py-3 mt-auto">
+
+        <div class="container-fluid">
+
+            <a class="icon-link p-3" href="https://www.facebook.com/ntiuppsala"><img class="bi" id="facebook-link"
+                    src="images/facebook.png" alt="Facebook logotyp"></a>
+            <a class="icon-link p-3" href="https://www.instagram.com/ntiuppsala/"><img class="bi" id="instagram-link"
+                    src="images/instagram.png" alt="Instagram logotyp"></a>
+            <a class="icon-link p-3" href="https://twitter.com/ntiuppsala"><img class="bi" id="x-link"
+                    src="images/x.png" alt="X logotyp"></a>
+
+        </div>
+
+    </footer>
+
+    <!-- <div class="container-md my-5">
         <div class="border border-primary border-3 p-2 bg-primary bg-opacity-75 py-4">
             <h1 class="h1 text-center text-secondary">Florist Blåklinten</h1>
 
@@ -161,7 +221,7 @@
 
     </footer> -->
 
-        <script src="js/openingHours.js"></script>
+    <script src="js/openingHours.js"></script>
 </body>
 
 </html>

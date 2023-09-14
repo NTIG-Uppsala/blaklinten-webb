@@ -48,6 +48,38 @@ a.navbar-brand img {
 }
 
 
-#fp-h {
+#frontpageHeader{
     padding-top: 25vh;
 }
+
+#backgroundInfo{
+    background-color:#cbcaff;
+    width:100%;
+}
+
+
+@media (max-width:1410px) and (min-width:500px) {
+    iframe{
+        width:300px;
+        height:300px;
+    }
+}
+
+@media (max-width:500px) {
+    iframe{
+        width:200px;
+        height:200px;
+    }
+    
+}
+
+@media (max-width:800px) {
+    #marginFindUs{
+        margin-top:100px;
+        margin-bottom:100px;
+    }
+    #marginOpenHours{
+        margin-bottom:100px;
+    }
+}
+
