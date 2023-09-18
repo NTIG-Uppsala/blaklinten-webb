@@ -8,7 +8,7 @@ function updateCurrentlyOpen(date) {
   if (currentlyOpenText == null) return;
   let text = "";
   if (isCurrentlyOpen(date)) {
-    text = 'Just nu: <span class="text-success">Öppet</span>';
+    text = 'Just nu: <span class="text-success  text-bg-dark bg-opacity-75">Öppet</span>';
   } else if (!isClosedDay(date) && !hasOpened(date)) {
     text =
       " <span>Vi öppnar klockan " +

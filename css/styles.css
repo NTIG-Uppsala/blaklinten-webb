@@ -52,6 +52,11 @@ a.navbar-brand img {
     padding-top: 25vh;
 }
 
+.bginfo{
+    display: inline-block;
+    
+}
+
 #backgroundInfo {
     background-color: #cbcaff;
     width: 100%;
