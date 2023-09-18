@@ -3,13 +3,25 @@ from os import getcwd, path
 from unittest import TestCase, main
 
 from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 
 
 class Tests(TestCase):
+    doNotCloseBrowser = False
+    hideWindow = True
+
     @classmethod
     def setUpClass(cls):
-        cls.browser = webdriver.Chrome()
+        chr_options = Options()
+
+        if cls.doNotCloseBrowser:
+            chr_options.add_experimental_option("detach", True)
+
+        if cls.hideWindow:
+            chr_options.add_argument("--headless")
+
+        cls.browser = webdriver.Chrome(options=chr_options)
 
     def setUp(self):
         self.browser.get(path.join(getcwd(), "index.html"))
