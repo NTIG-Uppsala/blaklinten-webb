@@ -14,7 +14,7 @@
 </head>
 <!-- The following segment is navbar -->
 
-<body onload='updateCurrentlyOpen(new Date());' class="d-flex flex-column">
+<body class="d-flex flex-column">
     <div class=" navbar navbar-expand-md bg-primary sticky-top">
         <div class="container-fluid">
             <a href="#" class="navbar-brand">
@@ -29,7 +29,7 @@
             <h1 class="h1 text-center text-secondary">Florist Blåklinten</h1>
 
             <div class="text-center text-light mainInfo">
-                Boka konsulttid genom att ringa <a class="link-secondary" href="tel:0630-555-555">0630-555-555</a><br>
+                Boka konsultation genom att ringa <a class="link-secondary" href="tel:0630-555-555">0630-555-555</a><br>
                 Du kan även mejla
                 <a class="link-secondary" href="mailto:info@ntig-uppsala.github.io">info@ntig-uppsala.github.io</a>
             </div>
@@ -113,7 +113,7 @@
             <div class="row justify-content-center">
                 <div class="col-md-6">
                     <div class="container center-text" id="designInfo">
-                        <h2 class="h2 text-center text-primary">Vill du designa själv?
+                        <h2 class="h2 text-center text-primary">Vill du ha hjälp att komponera din egen bukett?
                         </h2>
                         <h4 class="h4 text-center text-primary">Ring eller maila oss!</h4>
                         <p class="text-center text-light">
@@ -123,23 +123,23 @@
                             <a class="link-primary" href="mailto:info@ntig-uppsala.github.io"><i
                                     class="fa-solid fa-envelope">&nbsp;</i>info@ntig-uppsala.github.io</a>
                         </p>
+                        <h2 class="text-primary mt-3">Adress</h2>
+                        <p class="text-center text-primary fs-5">
+                            Fjällgatan 32H <br>
+                            981 39 Kiruna
+                        </p>
+
                     </div>
                 </div>
                 <div class="col-md-6" id="marginFindUs">
                     <div class="container">
-                        <h2 class="h2 text-center text-primary ">Hitta hit</h2>
+                        <h2 class="h2 text-center text-primary" id="fuText">Hitta hit</h2>
                         <div class="text-center text-black fs-5 my-3">
                             <iframe
                                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1503.2561387938995!2d20.23140837816331!3d67.8660575009758!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x45d0ba6368d7c9a3%3A0xe3887ef038c559b0!2sFj%C3%A4llgatan%2032%2C%20981%2039%20Kiruna!5e0!3m2!1ssv!2sse!4v1694676651494!5m2!1ssv!2sse"
-                                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                                width="800" height="450" style="border:0;" allowfullscreen="" loading="lazy"
                                 referrerpolicy="no-referrer-when-downgrade"></iframe>
-                            <p class="text-center text-primary">
-                                Fjällgatan 32H
-                                <br>
-                                981 39 Kiruna
-                                <br>
-                                <br>
-                            </p>
+
                         </div>
                         <p class="text-center text-light">
                     </div>
@@ -150,7 +150,8 @@
 
 
     <!-- This following segment is the footer -->
-    <footer class="bg-primary text-center py-3 mt-auto">
+    <footer class="bg-primary text-center py-1 mt-auto">
+
 
         <div class="container-fluid">
 
