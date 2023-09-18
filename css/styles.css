@@ -78,6 +78,14 @@ a.navbar-brand img {
     font-size: 23px;
 }
 
+#fuText {
+    margin-left: 30%;
+}
+
+#closedDaysInfo {
+    margin-left: 15%;
+}
+
 
 .center-text {
     text-align: center;
@@ -110,14 +118,14 @@ a.navbar-brand img {
         margin-bottom: 100px;
     }
 
-    #designInfo{
-        margin-top:70px;
+    #designInfo {
+        margin-top: 70px;
     }
 
-    #closedDaysInfo{
-        margin-bottom:80px;
+    #closedDaysInfo {
+        margin-bottom: 80px;
     }
-    
+
 }
 
 /* For different resolution */
