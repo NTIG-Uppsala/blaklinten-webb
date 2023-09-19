@@ -54,6 +54,8 @@ a.navbar-brand img {
 
 .bginfo{
     display: inline-block;
+    margin-left: 50%;
+    margin-right: 50%;
     
 }
 
@@ -78,9 +80,7 @@ a.navbar-brand img {
     font-size: 23px;
 }
 
-#fuText {
-    margin-left: 30%;
-}
+
 
 #closedDaysInfo {
     margin-left: 15%;
