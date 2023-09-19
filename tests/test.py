@@ -121,8 +121,6 @@ class Tests(TestCase):
         self.currentlyOpenHelper("2023-01-01T13:00:00", closed_text)
         self.currentlyOpenHelper("2023-01-06T13:00:00", closed_text)
         self.currentlyOpenHelper("2023-12-24T13:00:00", closed_text)
-
-        # Following test only tests dates in 2023 and may not be the same every year
         self.currentlyOpenHelper("2023-04-30T13:00:00", closed_text)
 
     def testClosedDaysPresent(self):
