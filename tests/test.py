@@ -94,34 +94,45 @@ class Tests(TestCase):
 
     def testCurrentlyOpen(self):
         open_text = "Just&nbsp;nu:&nbsp;"  # Only shows when store is open
-        closed_text = "Vi öppnar klockan"
+        # The following code snippet shows when store is not open
+        opening10Today_text = "Vi öppnar klockan 10"
+        opening10Tomorow_text = "Vi öppnar klockan 10 imorgon"
+
+        opening12Today_text = "Vi öppnar klockan 12"
+        opening12Tomorow_text = "Vi öppnar klockan 12 imorgon"
+
+        openingMonday_text = "Vi öppnar klockan 10 på måndag"
+
+        openignTuseday_text = "Vi öppnar klockan 10 på tisdag"
+
+        openingWendsday_text = "Vi öppnar klockan 10 på onsdag"
 
         # Monday
-        self.currentlyOpenHelper("2023-09-04T09:59:00", closed_text)
+        self.currentlyOpenHelper("2023-09-04T09:59:00", opening10Today_text)
         self.currentlyOpenHelper("2023-09-04T10:00:00", open_text)
         self.currentlyOpenHelper("2023-09-04T15:59:00", open_text)
-        self.currentlyOpenHelper("2023-09-04T16:00:00", closed_text)
+        self.currentlyOpenHelper("2023-09-04T16:00:00", opening10Tomorow_text)
 
         # Friday
-        self.currentlyOpenHelper("2023-09-08T09:59:00", closed_text)
+        self.currentlyOpenHelper("2023-09-08T09:59:00", opening10Today_text)
         self.currentlyOpenHelper("2023-09-08T10:00:00", open_text)
         self.currentlyOpenHelper("2023-09-08T15:59:00", open_text)
-        self.currentlyOpenHelper("2023-09-08T16:00:00", closed_text)
+        self.currentlyOpenHelper("2023-09-08T16:00:00", opening12Tomorow_text)
 
         # Saturday
-        self.currentlyOpenHelper("2023-09-09T11:59:00", closed_text)
+        self.currentlyOpenHelper("2023-09-09T11:59:00", opening12Today_text)
         self.currentlyOpenHelper("2023-09-09T12:00:00", open_text)
         self.currentlyOpenHelper("2023-09-09T14:59:00", open_text)
-        self.currentlyOpenHelper("2023-09-09T15:00:00", closed_text)
+        self.currentlyOpenHelper("2023-09-09T15:00:00", openingMonday_text)
 
         # Sunday
-        self.currentlyOpenHelper("2023-09-10T13:00:00", closed_text)
+        self.currentlyOpenHelper("2023-09-10T13:00:00", opening10Tomorow_text)
 
         # Closed days
-        self.currentlyOpenHelper("2023-01-01T13:00:00", closed_text)
-        self.currentlyOpenHelper("2023-01-06T13:00:00", closed_text)
-        self.currentlyOpenHelper("2023-12-24T13:00:00", closed_text)
-        self.currentlyOpenHelper("2023-04-30T13:00:00", closed_text)
+        self.currentlyOpenHelper("2023-01-01T13:00:00", opening10Tomorow_text)
+        self.currentlyOpenHelper("2023-01-06T13:00:00", opening12Tomorow_text)
+        self.currentlyOpenHelper("2023-12-24T13:00:00", openingWendsday_text)
+        self.currentlyOpenHelper("2023-04-30T13:00:00", openignTuseday_text)
 
     def testClosedDaysPresent(self):
         # Days in closed days list
