@@ -59,17 +59,19 @@ function hasOpened(date: Date): boolean {
   let day: number = date.getDay();
   let hour: number = date.getHours();
 
-  if (isClosedDay(date)) return false;
+  if (isClosedDay(date)) {
+    return false;
+  } else if (isSunday(date.getDay())) return false;
 
   if (isWeekday(day)) {
     return hour >= weekdayOpeningTime;
   } else if (isSaturday(day)) {
     return hour >= saturdayOpeningTime;
-  } else if (isSunday(date.getDay())) return true;
-  else {
+  } else {
     return false;
   }
 }
+
 
 // Function to check if the day is a closed day (holidays, etc.)
 function isClosedDay(date: Date): boolean {
