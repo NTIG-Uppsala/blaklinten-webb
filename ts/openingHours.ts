@@ -61,7 +61,9 @@ function hasOpened(date: Date): boolean {
 
   if (isClosedDay(date)) {
     return false;
-  } else if (isSunday(date.getDay())) return false;
+  } else if (isSunday(date.getDay())) {
+    return true;
+  }
 
   if (isWeekday(day)) {
     return hour >= weekdayOpeningTime;
