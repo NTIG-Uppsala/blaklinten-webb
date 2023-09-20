@@ -110,6 +110,7 @@ class Tests(TestCase):
 
         # Saturday
         self.currentlyOpenHelper("2023-09-09T11:59:00", closed_text)
+
         self.currentlyOpenHelper("2023-09-09T12:00:00", open_text)
         self.currentlyOpenHelper("2023-09-09T14:59:00", open_text)
         self.currentlyOpenHelper("2023-09-09T15:00:00", closed_text)

@@ -181,3 +181,4 @@ window.setInterval(() => updateCurrentlyOpen(new Date()), 5000);
 
 // Initially update the "currently open" status
 updateCurrentlyOpen(new Date());
+

@@ -1,3 +1,4 @@
+"use strict";
 // Define opening and closing times for weekdays and Saturday
 const weekdayOpeningTime = 10;
 const weekdayClosingTime = 16;
@@ -51,7 +52,10 @@ function isCurrentlyOpen(date) {
 function hasOpened(date) {
     let day = date.getDay();
     let hour = date.getHours();
-    if (isClosedDay(date))
+    if (isClosedDay(date)) {
+        return false;
+    }
+    else if (isSunday(date.getDay()))
         return false;
     if (isWeekday(day)) {
         return hour >= weekdayOpeningTime;
@@ -59,8 +63,6 @@ function hasOpened(date) {
     else if (isSaturday(day)) {
         return hour >= saturdayOpeningTime;
     }
-    else if (isSunday(date.getDay()))
-        return true;
     else {
         return false;
     }
