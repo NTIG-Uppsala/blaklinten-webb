@@ -1,4 +1,9 @@
 @charset "UTF-8";
+@font-face {
+  /* License: ../fonts/DMSerifDisplay/OFL.txt */
+  font-family: "DM Serif Display";
+  src: url("../fonts/DMSerifDisplay/DMSerifDisplay-Regular.ttf");
+}
 :root {
   --bs-link-opacity: 1;
 }
@@ -10,6 +15,15 @@
   text-decoration-color: rgba(var(--bs-link-color-rgb), var(--bs-link-opacity));
   text-underline-offset: 0.25em;
   backface-visibility: hidden;
+}
+
+.navbar-brand img {
+  height: 3rem;
+}
+
+h1, .h1 {
+  font-family: "DM Serif Display", serif;
+  /* Add any other styles you want for h1 here */
 }
 
 /*!
