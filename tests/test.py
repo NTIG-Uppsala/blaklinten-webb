@@ -148,8 +148,10 @@ class Tests(TestCase):
 
     def testFonts(self):
         h1_font = self.browser.find_element(By.CLASS_NAME, "h1")
-        self.assertEqual(
-            h1_font.value_of_css_property("font-family"), '"DM Serif Display"'
+        self.assertTrue(
+            h1_font.value_of_css_property("font-family").startswith(
+                '"DM Serif Display"'
+            )
         )
         p_fonts = self.browser.find_elements(By.TAG_NAME, "p")
         for p_font in p_fonts:

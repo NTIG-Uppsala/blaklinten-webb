@@ -30,7 +30,8 @@ h1, .h1 {
   font-family: "DM Serif Display", serif;
   /* Add any other styles you want for h1 here */
 }
-h1 .text-center, .h1 .text-center {
+
+.text-center {
   font-size: 1.5rem;
 }
 
