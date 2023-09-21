@@ -8,8 +8,8 @@ from selenium.webdriver.common.by import By
 
 
 class Tests(TestCase):
-    doNotCloseBrowser = False
-    hideWindow = True
+    doNotCloseBrowser = True
+    hideWindow = False
 
     @classmethod
     def setUpClass(cls):

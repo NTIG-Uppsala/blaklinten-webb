@@ -7,14 +7,13 @@
     <title>Florist Blåklinten</title>
     <link rel="shortcut icon" type="images/x-icon" href="images/favicon.ico">
     <link rel="stylesheet" href="css/custom.css">
-    <link rel="stylesheet" href="css/styles.css">
     <script src="https://kit.fontawesome.com/0b2436849d.js" crossorigin="anonymous"></script> <!-- Icons -->
     <script src="js/openingHours.js"></script> <!-- Links Javascript -->
 
 </head>
 <!-- The following segment is navbar -->
 
-<body class="d-flex flex-column">
+<body>
     <div class=" navbar navbar-expand-md bg-primary sticky-top">
         <div class="container-fluid">
             <a href="#" class="navbar-brand">
@@ -24,32 +23,39 @@
     </div>
 
     <!-- This following segment is for the first page you see on the site -->
-    <div class="header">
-        <div id="frontpageHeader" class="container-fluid mx-auto my-auto justify-content-center">
-            <h1 class="h1 text-center text-secondary ">Florist Blåklinten</h1>
+    <div class="container-fluid px-0">
+        <div style="background-image: url('images/purple_flower.png'); background-size: cover; height: 100vh;"
+            class="img-fluid">
+            <div class="container-fluid text-center h-75 align-items-center d-flex">
 
-            <div class="text-center text-light mainInfo">
-                Boka konsultation genom att ringa <a class="link-secondary" href="tel:0630-555-555">0630-555-555</a><br>
-                Du kan även mejla
-                <a class="link-secondary" href="mailto:info@ntig-uppsala.github.io">info@ntig-uppsala.github.io</a>
-            </div>
-            <div class="text-center">
-                <div class="text-center my-auto text-secondary liveOpen text-bg-dark bg-opacity-75 bginfo px-1"
-                    id="currently-open-text">Just&nbsp;nu:&nbsp;<span class="text-success">Öppet</span>
+                <div class="container-fluid">
+                    <h1 class=" h1 text-center text-secondary ">Florist Blåklinten</h1>
+
+                    <div class=" text-center text-light mainInfo">
+                        Boka konsultation genom att ringa <a class="link-secondary"
+                            href="tel:0630-555-555">0630-555-555</a><br>
+                        Du kan även mejla
+                        <a class="link-secondary"
+                            href="mailto:info@ntig-uppsala.github.io">info@ntig-uppsala.github.io</a>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-center my-auto text-secondary liveOpen text-bg-dark bg-opacity-75 bginfo px-1"
+                            style="display: inline-block;" id="currently-open-text">Just&nbsp;nu:&nbsp;<span
+                                class="text-success">Öppet</span>
+                        </div>
+                    </div>
+
                 </div>
             </div>
-
-
-
         </div>
     </div>
 
     <!-- This following segment is the white div with open and closed days, and open hours -->
     <div class="container my-5 py-5">
-        <div class="row justify-content-end">
-            <div class="col-md-6" id="marginOpenHours">
-                <div class="container" id="openHoursContainer">
-                    <h2 class="h2 text-center text-secondary my-5 ">Öppettider</h2>
+        <div class="row">
+            <div class="col-md-6 align-self-center" id="marginOpenHours">
+                <div class="container" style="max-width: 400px;" id="openHoursContainer">
+                    <h2 class="h2 text-center mb-4 text-secondary ">Öppettider</h2>
                     <div class="text-black" id="openHours">
                         <p>Måndag-fredag <span class="float-end"> 10:00-16:00 </span></p>
                         <p>Lördag <span class="float-end"> 12:00-15:00 </span></p>
@@ -64,7 +70,7 @@
             <div class="col-md-6">
                 <div class="container" id="closedDaysInfo">
                     <h2 class="h2 text-center text-secondary">Stängda dagar</h2>
-                    <ul class="list-unstyled text-start text-black fs-5">
+                    <ul class="list-unstyled text-start text-black">
                         <li>
                             Nyårsdagen
                             <span class="float-end">1/1</span>
@@ -112,27 +118,31 @@
     </div>
 
     <!-- This following segment is the find us and custom make flowers with contants and map, final part before footer -->
-    <div id="backgroundInfo">
-        <div class="container-fluid my-5 py-3">
+    <div class="bg-secondary">
+        <div class="container-fluid py-3">
             <div class="row justify-content-center">
                 <div class="col-md-6">
                     <div class="container center-text" id="designInfo">
-                        <h2 class="h2 text-center text-primary">
-                            Vill&nbsp;du&nbsp;ha&nbsp;hjälp&nbsp;att&nbsp;komponera<br>din&nbsp;egen&nbsp;bukett?
+                        <h2 class="h2 text-center mt-5 text-primary">
+                            Vill&nbsp;du&nbsp;ha&nbsp;hjälp&nbsp;att komponera<br>din&nbsp;egen&nbsp;bukett?
                         </h2>
-                        <h4 class="h4 text-center text-primary">Ring eller maila oss!</h4>
-                        <p class="text-center text-light">
-                            <a class="link-primary" href="tel:0630-555-555"> <i class="fa-solid fa-phone">&nbsp;</i>
-                                0630-555-555</a>
-                            <br>
-                            <a class="link-primary" href="mailto:info@ntig-uppsala.github.io"><i
-                                    class="fa-solid fa-envelope">&nbsp;</i>info@ntig-uppsala.github.io</a>
-                        </p>
-                        <h2 class="text-primary mt-3">Adress</h2>
-                        <p class="text-center text-primary fs-5">
-                            Fjällgatan 32H <br>
-                            981 39 Kiruna
-                        </p>
+                        <div class="my-5">
+                            <h4 class="h4 text-center pt-3 text-primary">Ring eller maila oss!</h4>
+                            <p class="text-center text-light">
+                                <a class="link-primary" href="tel:0630-555-555"> <i class="fa-solid fa-phone">&nbsp;</i>
+                                    0630-555-555</a>
+                                <br>
+                                <a class="link-primary" href="mailto:info@ntig-uppsala.github.io"><i
+                                        class="fa-solid fa-envelope">&nbsp;</i>info@ntig-uppsala.github.io</a>
+                            </p>
+                        </div>
+                        <div class="my-5">
+                            <h2 class="h4 text-primary text-center mt-3">Adress</h2>
+                            <p class="text-center text-primary">
+                                Fjällgatan 32H <br>
+                                981 39 Kiruna
+                            </p>
+                        </div>
 
                     </div>
                 </div>
@@ -143,7 +153,7 @@
                         <div class="row">
                             <div class="col-md-12 text-center">
                                 <h2 class="h2 text-center text-primary">Hitta hit</h2>
-                                <div class="text-center fs-5 my-3">
+                                <div class="text-center my-3">
                                     <iframe
                                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1503.2561387938995!2d20.23140837816331!3d67.8660575009758!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x45d0ba6368d7c9a3%3A0xe3887ef038c559b0!2sFj%C3%A4llgatan%2032%2C%20981%2039%20Kiruna!5e0!3m2!1ssv!2sse!4v1694676651494!5m2!1ssv!2sse"
                                         width="800" height="450"
@@ -162,11 +172,11 @@
     </div>
 
     <!-- This following segment is the footer -->
-    <footer class="bg-primary text-center py-1 mt-auto">
-        <a class="text-secondary" href="tel:0630-555-555"> <i class="fa-solid fa-phone">&nbsp;</i>
+    <footer class="bg-primary text-center mt-auto">
+        <a class="text-secondary h5" href="tel:0630-555-555"> <i class="fa-solid fa-phone">&nbsp;</i>
             0630-555-555</a>
         <span class="text-secondary">|</span>
-        <a class="text-secondary" href="mailto:info@ntig-uppsala.github.io"><i
+        <a class="text-secondary h5" href="mailto:info@ntig-uppsala.github.io"><i
                 class="fa-solid fa-envelope">&nbsp;</i>info@ntig-uppsala.github.io</a>
 
         <div class="container-fluid">
