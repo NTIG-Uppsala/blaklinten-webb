@@ -8,8 +8,8 @@ from selenium.webdriver.common.by import By
 
 
 class Tests(TestCase):
-    doNotCloseBrowser = True
-    hideWindow = False
+    doNotCloseBrowser = False
+    hideWindow = True
 
     @classmethod
     def setUpClass(cls):
@@ -64,19 +64,43 @@ class Tests(TestCase):
         self.browser.find_element(By.ID, "facebook-link").click()
         self.assertIn("https://www.facebook.com/ntiuppsala", self.browser.current_url)
 
-    def testPhoneNumberPresent(self):
-        phone_number_links = self.browser.find_elements(
-            By.XPATH, "//a[@href='tel:0630-555-555']"
+    def PhoneNumberPresentHelper(self, class_string: str):
+        phone_number_links = self.browser.find_element(By.CLASS_NAME, class_string)
+        self.assertIn(
+            "0630-555-555",
+            phone_number_links.get_attribute("innerHTML"),
         )
-        for phone_number_link in phone_number_links:
-            self.assertIn("0630-555-555", phone_number_link.text)
 
-    def testEmailAddressPresent(self):
-        email_address_links = self.browser.find_elements(
-            By.XPATH, "//a[@href='mailto:info@ntig-uppsala.github.io']"
+    # Intro page phone number
+    def testPhoneNumberPresentNoBr(self):
+        self.PhoneNumberPresentHelper("img-fluid")
+
+    # Call us page phone number
+    def testPhoneNumberPresent(self):
+        self.PhoneNumberPresentHelper("bg-secondary")
+
+    # Footer page phone number
+    def testPhoneNumberFooterPresent(self):
+        self.PhoneNumberPresentHelper("footer")
+
+    def EmailAddressPresentHelper(self, class_string: str):
+        phone_number_links = self.browser.find_element(By.CLASS_NAME, class_string)
+        self.assertIn(
+            "info@ntig-uppsala.github.io",
+            phone_number_links.get_attribute("innerHTML"),
         )
-        for email_address_link in email_address_links:
-            self.assertIn("info@ntig-uppsala.github.io", email_address_link.text)
+
+    # Intro page mail
+    def testEmailAddressPresentNoBr(self):
+        self.PhoneNumberPresentHelper("img-fluid")
+
+    # Call us page mail
+    def testEmailAddressPresent(self):
+        self.PhoneNumberPresentHelper("bg-secondary")
+
+    # Footer page mail
+    def testEmailAddressFooterPresent(self):
+        self.PhoneNumberPresentHelper("footer")
 
     def testAddressPresent(self):
         self.assertIn("Fjällgatan 32H", self.browser.page_source)
