@@ -8,6 +8,7 @@ const saturdayClosingTime: number = 15;
 function updateCurrentlyOpen(date: Date): void {
   let currentlyOpenText: HTMLElement | null = document.getElementById("currently-open-text");
 
+
   // If the element doesn't exist, return
   if (currentlyOpenText == null) return;
 
@@ -68,6 +69,8 @@ function hasOpened(date: Date): boolean {
   } else if (isSaturday(day)) {
     return hour >= saturdayOpeningTime;
   } else {
+    // This should never happen because all days should have been checked
+    console.error("ERROR! Funktion hasOpened error");
     return false;
   }
 }

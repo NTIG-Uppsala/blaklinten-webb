@@ -55,9 +55,6 @@ function hasOpened(date) {
     if (isClosedDay(date)) {
         return false;
     }
-    else if (isSunday(date.getDay())) {
-        return true;
-    }
     if (isWeekday(day)) {
         return hour >= weekdayOpeningTime;
     }
@@ -65,6 +62,8 @@ function hasOpened(date) {
         return hour >= saturdayOpeningTime;
     }
     else {
+        // This should never happen because all days should have been checked
+        console.error("ERROR! Funktion hasOpened error");
         return false;
     }
 }
@@ -108,6 +107,9 @@ function isClosedDay(date) {
         month: date.getMonth(),
         dayOfTheMonth: date.getDate(),
     };
+    if (isSunday(date.getDay())) {
+        return true;
+    }
     for (let i = 0; i < closedDays.length; i++) {
         if (closedDays[i].month == dayMonth.month &&
             closedDays[i].dayOfTheMonth == dayMonth.dayOfTheMonth)
