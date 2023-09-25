@@ -3,6 +3,17 @@
 Hemsida för Florist Blåklinten 2023-2024
 
 [Länk till live hemsida](https://ntig-uppsala.github.io/blaklinten/)
+## Använd TS inte JS
+TS (Typescript) är en fil där man genererar en js-fil
+
+[Länk om TS]( https://www.youtube.com/watch?v=zQnBQ4tB3ZA&ab_channel=Fireship)
+
+[Länk om TS dokumentation](https://www.typescriptlang.org/docs/handbook/typescript-tooling-in-5-minutes.html) 
+
+
+
+## Dokumentation
+ [Länk till installations-dokument](/README-info/installations.md)
 
 ## Definition of Done
 ### Gäller allt:
@@ -24,6 +35,10 @@ Hemsida för Florist Blåklinten 2023-2024
   * Koden följer kodningsstandarder
   * Koden är relativt lättläst, är kommenterad och dokumenterad ifall det behövs
 
+## Utvecklingsmiljöstandard
+* OS: Windows 10
+* IDE/code editor: personlig preferens annars visual studio code
+* Git/GitHub
 
 ## Programmeringsspråk
 * HTML5
