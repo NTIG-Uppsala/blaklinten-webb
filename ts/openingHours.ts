@@ -61,8 +61,6 @@ function hasOpened(date: Date): boolean {
 
   if (isClosedDay(date)) {
     return false;
-  } else if (isSunday(date.getDay())) {
-    return true;
   }
 
   if (isWeekday(day)) {
@@ -116,6 +114,10 @@ function isClosedDay(date: Date): boolean {
     month: date.getMonth(),
     dayOfTheMonth: date.getDate(),
   };
+
+  if (isSunday(date.getDay())) {
+    return true;
+  }
 
   for (let i: number = 0; i < closedDays.length; i++) {
     if (
