@@ -1,13 +1,15 @@
+import threading
 import time
-from os import getcwd, path
-from unittest import TestCase, main
+import unittest
 
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 
+from app import app
 
-class Tests(TestCase):
+
+class Tests(unittest.TestCase):
     doNotCloseBrowser = False
     hideWindow = True
 
@@ -23,14 +25,26 @@ class Tests(TestCase):
 
         cls.browser = webdriver.Chrome(options=chr_options)
 
+        # Create a separate thread to start the Flask app
+        cls.server_thread = threading.Thread(target=cls.start_flask_app)
+        cls.server_thread.daemon = True
+        cls.server_thread.start()
+
+        # Wait for the Flask app to start
+        time.sleep(2)
+
+    @classmethod
+    def start_flask_app(cls):
+        app.run(host="localhost", port=5000)
+
     def setUp(self):
-        self.browser.get(path.join(getcwd(), "index.html"))
+        self.browser.get("http://localhost:5000")
 
     def tearDown(self):
-        _ = self.browser.get_log("browser")
         self.browser.get("about:blank")
 
     def testNoErrors(self):
+        time.sleep(2)
         log = self.browser.get_log("browser")
         for message in log:
             self.assertNotEqual(message["level"], "SEVERE")
@@ -191,5 +205,10 @@ class Tests(TestCase):
         self.assertIn(".svg", src)
 
 
+def tearDownClass(cls):
+    # Clean up the WebDriver session
+    cls.browser.quit()
+
+
 if __name__ == "__main__":
-    main(verbosity=2)
+    unittest.main(verbosity=2)

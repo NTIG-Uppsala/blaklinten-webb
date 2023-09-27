@@ -12,6 +12,9 @@ function updateCurrentlyOpen(date: Date): void {
   // If the element doesn't exist, return
   if (currentlyOpenText == null) return;
 
+  // Remove the existing class (if any) 
+  currentlyOpenText.classList.remove("d-none");
+
   let text: string = "";
 
   // Check if the business is currently open

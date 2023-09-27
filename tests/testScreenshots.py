@@ -1,4 +1,5 @@
 import math
+import threading
 import time
 from os import getcwd, mkdir, path
 from unittest import TestCase, main
@@ -6,23 +7,31 @@ from unittest import TestCase, main
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 
+from app import app
+
 
 class Tests(TestCase):
     @classmethod
     def setUpClass(cls):
         cls.browser = webdriver.Chrome()
 
+        # Create a separate thread to start the Flask app
+        cls.server_thread = threading.Thread(target=cls.start_flask_app)
+        cls.server_thread.daemon = True
+        cls.server_thread.start()
+
+        # Wait for the Flask app to start
+        time.sleep(2)
+
+    @classmethod
+    def start_flask_app(cls):
+        app.run(host="localhost", port=5000)
+
     def setUp(self):
-        self.browser.get(path.join(getcwd(), "index.html"))
+        self.browser.get("http://localhost:5000")
 
     def tearDown(self):
-        _ = self.browser.get_log("browser")
         self.browser.get("about:blank")
-
-    def testNoErrors(self):
-        log = self.browser.get_log("browser")
-        for message in log:
-            self.assertNotEqual(message["level"], "SEVERE")
 
     def screenshotHelper(
         self, width, height

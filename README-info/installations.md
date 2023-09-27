@@ -6,7 +6,7 @@
 
  
 
-![](/images/md-images/Bild2.png)
+![](/md-images/Bild2.png)
 
  
 
@@ -14,7 +14,7 @@
 
  
 
-![](/images/md-images/Bild3.png)
+![](/md-images/Bild3.png)
 
  
 
@@ -22,7 +22,7 @@
 
  
 
-![](/images/md-images/Bild4.png)
+![](/md-images/Bild4.png)
 
  
 
@@ -30,7 +30,7 @@
 
  
 
-![](/images/md-images/Bild1.png)
+![](/md-images/Bild1.png)
 
  
 
@@ -98,21 +98,21 @@ Hitta extensions i VSCode genom View -> Extensions eller Ctrl + Shift + X
 
  
 
-****![](/images/md-images/bf.png)****
+****![](/md-images/bf.png)****
 
  
 
 2. Öppna en python fil
 3. högerklicka på en tom yta och välj Format Document With…  
 
-![](/images/md-images/Bild5.png)  
+![](/md-images/Bild5.png)  
 4. Välj configure default formatter.  
 5. Välj Black Formatter.  
 6. Sök User Settings i Ctrl + Shift + P
 
  
 
-![](/images/md-images/Bild6.png)
+![](/md-images/Bild6.png)
 
  
 
@@ -120,7 +120,7 @@ Hitta extensions i VSCode genom View -> Extensions eller Ctrl + Shift + X
 
  
 
-![](/images/md-images/Bild7.png)
+![](/md-images/Bild7.png)
 
  
 
@@ -132,11 +132,11 @@ Hitta extensions i VSCode genom View -> Extensions eller Ctrl + Shift + X
 
  
 
-![](/images/md-images/Bild8.png)
+![](/md-images/Bild8.png)
 
  
 
-2. ![](/images/md-images/Bild9.png)Sök User Settings i Ctrl + Shift + P och välj JSON
+2. ![](/md-images/Bild9.png)Sök User Settings i Ctrl + Shift + P och välj JSON
 
  
 
@@ -148,7 +148,7 @@ Hitta extensions i VSCode genom View -> Extensions eller Ctrl + Shift + X
 
  
 
-![](/images/md-images/Bild10.png)
+![](/md-images/Bild10.png)
 
  
 
@@ -156,7 +156,7 @@ Hitta extensions i VSCode genom View -> Extensions eller Ctrl + Shift + X
 
  
 
-1. Ladda ner isort ![](/images/md-images/Bild11.png)
+1. Ladda ner isort ![](/md-images/Bild11.png)
 2. Tryck ctrl shift p och sök open user setting.json
 3. lägg till denna kod under black formatter
 
@@ -176,4 +176,9 @@ Hitta extensions i VSCode genom View -> Extensions eller Ctrl + Shift + X
 
  
 
-![](/images/md-images/Bild12.png)
+![](/md-images/Bild12.png)
+
+**Flask**  
+
+Flask instalation guide
+* https://www.youtube.com/watch?v=uxZuFm5tmhM&ab_channel=AmitThinks
