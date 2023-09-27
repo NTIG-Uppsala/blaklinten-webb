@@ -58,4 +58,4 @@ jobs:
         with:
           app-name: "Blaklinten-WEB"
           slot-name: "Production"
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_B92D95E7DD044E8F8C02F759C64FCE1C }}
+          publish-profile: ${{ secrets.AZURE }}
