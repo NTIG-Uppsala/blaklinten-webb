@@ -36,7 +36,7 @@ TS (Typescript) är en fil där man genererar en js-fil
 
 ## Utvecklingsmiljöstandard
 * OS: Windows 10
-* IDE/code editor: visual studio code
+* IDE/code editor: Visual Studio Code
 * Git/GitHub
 
 ## Programmeringsspråk
@@ -47,3 +47,21 @@ TS (Typescript) är en fil där man genererar en js-fil
 * Bootstrap 5.3.1
 * Selenium 4.11.2
 * Sass 1.66.1
+
+## Kodningsstandard
+ För HTML/CSS:
+* https://google.github.io/styleguide/htmlcssguide.html 
+
+Undantag:
+
+* Indent = 4 spaces
+
+För TypeScript: 
+
+* https://google.github.io/styleguide/tsguide.html 
+
+För python:
+
+* Om det är definierat, samma stil som används av Black Formatter (VSC extension)
+
+* Annars:  https://google.github.io/styleguide/pyguide.html
