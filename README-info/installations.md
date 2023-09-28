@@ -182,3 +182,9 @@ Hitta extensions i VSCode genom View -> Extensions eller Ctrl + Shift + X
 
 Flask instalation guide
 * https://www.youtube.com/watch?v=uxZuFm5tmhM&ab_channel=AmitThinks
+
+**Azure**
+ 
+* secret, linka med github
+* skapa web app
+* student-pack github
