@@ -74,15 +74,15 @@ För att kompilera TS-kod:
 
  
 
-\*ersätt "\[typescript-fil]" med en path till TS-filen som ska kompileras
+\*Ersätt "\[typescript-fil]" med en path till TS-filen som ska kompileras
 
  
 
-du kan göra så att den auto kompilerar on save genom att kolla på den här videon <https://www.youtube.com/watch?v=VRT7M6PZDlw> om du får error “cannot be loaded because running scripts is disabled on this system.” Så ska du öppna powershell som admin och skriv in “Set-ExecutionPolicy RemoteSigned” och sedan “Y” för yes.
+Du kan göra så att den auto kompilerar on save genom att kolla på den här videon <https://www.youtube.com/watch?v=VRT7M6PZDlw> om du får error “cannot be loaded because running scripts is disabled on this system.” Så ska du öppna powershell som admin och skriv in “Set-ExecutionPolicy RemoteSigned” och sedan “Y” för yes.
 
  
 
-**Visual studio extensions**
+**Visual Studio extensions**
 
  
 
@@ -90,7 +90,7 @@ Hitta extensions i VSCode genom View -> Extensions eller Ctrl + Shift + X
 
  
 
-**Blackformater**
+**Black Formatter**
 
  
 
@@ -103,7 +103,7 @@ Hitta extensions i VSCode genom View -> Extensions eller Ctrl + Shift + X
  
 
 2. Öppna en python fil
-3. högerklicka på en tom yta och välj Format Document With…  
+3. Högerklicka på en tom yta och välj Format Document With…  
 
 ![](/md-images/Bild5.png)  
 4. Välj configure default formatter.  
@@ -116,7 +116,7 @@ Hitta extensions i VSCode genom View -> Extensions eller Ctrl + Shift + X
 
  
 
-7. Sök format i sökrutan och klicka i rutan för Format on save
+7. Sök format i sökrutan och klicka i rutan för Format On Save
 
  
 
@@ -136,7 +136,11 @@ Hitta extensions i VSCode genom View -> Extensions eller Ctrl + Shift + X
 
  
 
-2. ![](/md-images/Bild9.png)Sök User Settings i Ctrl + Shift + P och välj JSON
+2. Sök User Settings i Ctrl + Shift + P och välj JSON
+
+ ![](/md-images/Bild9.png) 
+
+
 
  
 
@@ -152,13 +156,14 @@ Hitta extensions i VSCode genom View -> Extensions eller Ctrl + Shift + X
 
  
 
-**isort**
+**isort:**
 
  
+![](/md-images/Bild11.png)
 
-1. Ladda ner isort ![](/md-images/Bild11.png)
+1. Ladda ner isort 
 2. Tryck ctrl shift p och sök open user setting.json
-3. lägg till denna kod under black formatter
+3. Lägg till denna kod under Black Formatter
 
  
 
@@ -172,7 +177,7 @@ Hitta extensions i VSCode genom View -> Extensions eller Ctrl + Shift + X
 
  
 
-4. se till så att filen nu ser ut såhär
+4. Se till så att filen nu ser ut så här
 
  
 
@@ -180,18 +185,18 @@ Hitta extensions i VSCode genom View -> Extensions eller Ctrl + Shift + X
 
 **Flask**  
 
-Flask instalation guide
+Flask installation guide
 * https://www.youtube.com/watch?v=uxZuFm5tmhM&ab_channel=AmitThinks
 
 **Azure**
 
- Skapa ett konto på microsoft Azure med ditt github student pack
+ Skapa ett konto på Microsoft Azure med ditt github student pack
  
- När du skapat ett konto klicka på create resource
+ När du skapat ett konto klicka på create a resource
 
 ![](/md-images/azure-img/azure1.png/)
 
-Klicka på create under Web App
+Klicka på Create under Web App
 
 ![](/md-images/azure-img/azure2.png/)
 
@@ -199,7 +204,7 @@ Klicka på create under Web App
 
 * Välj namn på sidan
 
-* Under "puplish" välj code
+* Under "publish" välj code
 
 * Under "runtime stack" välj Python - 3.11 
 
@@ -215,10 +220,10 @@ Sedan efter laddning gå in på "go to resource"
 
 ![](/md-images/azure-img/azure4.png/)
 
-Här kommer din domain upp
+Här dyker din default domain upp
 
 ![](/md-images/azure-img/azure5.png/)
-### koppla Github och Azure
+### Koppla Github och Azure
 
 Ladda ned publish profile
 
@@ -228,13 +233,15 @@ Ladda ned publish profile
 
 * Kopiera allt i filen 
 
+* Sedan radera filen
+
 * Gå in på din github
 
 * Klicka på "Settings"
 
 ![](/md-images/azure-img/azure7.png/)
 
-* Klicka på "Actions"
+* Klicka på "Actions" under "Secrets and variables"
 
 ![](/md-images/azure-img/azure8.png/)
 
@@ -249,7 +256,7 @@ Ladda ned publish profile
 ![](/md-images/azure-img/azure10.png/)
 
 * Nu ska du gå in på vscode
-* gå in i mappen .github\workflows och öppna din .yml fil
+* Gå in i mappen .github\workflows och öppna din .yml fil
 
 ![](/md-images/azure-img/azure11.png/)
 
