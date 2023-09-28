@@ -31,6 +31,15 @@
  
 
 ![](/md-images/Bild1.png)
+
+ 
+
+**Installation av Node 18.17.1**
+
+ 
+
+<https://nodejs.org/en>
+
  
 
 **Installation av bootstrap och sass compiling**
