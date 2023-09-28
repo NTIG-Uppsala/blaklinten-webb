@@ -18,7 +18,7 @@
 
  
 
-3. Ladda ner Python extension i Visual Studio Co
+3. Ladda ner Python extension i Visual Studio Code
 
  
 
