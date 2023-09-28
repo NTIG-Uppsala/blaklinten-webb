@@ -56,6 +56,6 @@ jobs:
         uses: azure/webapps-deploy@v2
         id: deploy-to-webapp
         with:
-          app-name: "Blaklinten-WEB"
+          app-name: "blaklinten"
           slot-name: "Production"
           publish-profile: ${{ secrets.AZURE }}
