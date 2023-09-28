@@ -30,21 +30,20 @@ TS (Typescript) är en fil där man genererar en js-fil
 * Koden ska klara alla tester
 * Koden ska vara validerad (om applicerbart)
 * Inga placeholders
-* Co-Authors ska vara tillagda
 * Det ska finnas en accepterad review från någon som inte varit med och skrivit kodändringarna (om koden inte skrivits av alla i gruppen tillsammans)
   * Koden följer kodningsstandarder
   * Koden är relativt lättläst, är kommenterad och dokumenterad ifall det behövs
 
 ## Utvecklingsmiljöstandard
 * OS: Windows 10
-* IDE/code editor: personlig preferens annars visual studio code
+* IDE/code editor: visual studio code
 * Git/GitHub
 
 ## Programmeringsspråk
 * HTML5
 * CSS3
 * TypeScript 5.2.2
-* Python 3.11.5 (för testning)
+* Python 3.11.5
 * Bootstrap 5.3.1
 * Selenium 4.11.2
 * Sass 1.66.1
