@@ -2,7 +2,7 @@
 
 Hemsida för Florist Blåklinten 2023-2024
 
-[Länk till live hemsida](https://ntig-uppsala.github.io/blaklinten/)
+[Länk till live hemsida](https://blaklinten.azurewebsites.net/)
 ## Använd TS inte JS
 TS (Typescript) är en fil där man genererar en js-fil
 

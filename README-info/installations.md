@@ -184,7 +184,79 @@ Flask instalation guide
 * https://www.youtube.com/watch?v=uxZuFm5tmhM&ab_channel=AmitThinks
 
 **Azure**
+
+ Skapa ett konto på microsoft Azure med ditt github student pack
  
-* secret, linka med github
-* skapa web app
-* student-pack github
+ När du skapat ett konto klicka på create resource
+
+![](/md-images/azure-img/azure1.png/)
+
+Klicka på create under Web App
+
+![](/md-images/azure-img/azure2.png/)
+
+* Skapa en resource group
+
+* Välj namn på sidan
+
+* Under "puplish" välj code
+
+* Under "runtime stack" välj Python - 3.11 
+
+* Under "region" välj north europe
+
+* Under "linux plan" välj B1 plan
+
+* Sedan tryck "review + create"
+
+![](/md-images/azure-img/azure3.png/)
+
+Sedan efter laddning gå in på "go to resource" 
+
+![](/md-images/azure-img/azure4.png/)
+
+Här kommer din domain upp
+
+![](/md-images/azure-img/azure5.png/)
+### koppla Github och Azure
+
+Ladda ned publish profile
+
+![](/md-images/azure-img/azure6.png/)
+
+* Öppna den nedladdade filen i vscode
+
+* Kopiera allt i filen 
+
+* Gå in på din github
+
+* Klicka på "Settings"
+
+![](/md-images/azure-img/azure7.png/)
+
+* Klicka på "Actions"
+
+![](/md-images/azure-img/azure8.png/)
+
+* Skapa en "New repository secret"
+
+![](/md-images/azure-img/azure9.png/)
+
+* Skapa ett namn till din secret under "Name"
+* Klistra in det du kopierade under "Secret"
+* Klicka Sedan på "Add secret"
+
+![](/md-images/azure-img/azure10.png/)
+
+* Nu ska du gå in på vscode
+* gå in i mappen .github\workflows och öppna din .yml fil
+
+![](/md-images/azure-img/azure11.png/)
+
+* Skriv in namnet på web-appen i (app-name: "")
+* Skriv in namnet på din secret efter "secrets." i (publish-profile: ${{ secrets. }})
+
+![](/md-images/azure-img/azure12.png/)
+
+Nu så kommer din main repository att laddas upp på din web-app varje gång du pushar till main
+
