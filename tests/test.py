@@ -38,13 +38,17 @@ class Tests(unittest.TestCase):
         app.run(host="localhost", port=5000)
 
     def setUp(self):
+        # use this instead of the below line if you want to test the local version
         self.browser.get("http://localhost:5000")
+
+        # use this instead of the above line if you want to test the deployed version
+        # self.browser.get("https://blaklinten.azurewebsites.net/")
 
     def tearDown(self):
         self.browser.get("about:blank")
 
     def testNoErrors(self):
-        time.sleep(2)
+        time.sleep(10)
         log = self.browser.get_log("browser")
         for message in log:
             self.assertNotEqual(message["level"], "SEVERE")
