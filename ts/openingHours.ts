@@ -81,6 +81,9 @@ function hasOpened(date: Date): boolean {
 
 // Function to check if the day is a closed day (holidays, etc.)
 function isClosedDay(date: Date): boolean {
+  if (isSunday(date.getDay())) {
+    return true;
+  }
   const closedDays: { month: number; dayOfTheMonth: number }[] = [
     {
       month: 0,
@@ -120,10 +123,6 @@ function isClosedDay(date: Date): boolean {
     month: date.getMonth(),
     dayOfTheMonth: date.getDate(),
   };
-
-  if (isSunday(date.getDay())) {
-    return true;
-  }
 
   for (let i: number = 0; i < closedDays.length; i++) {
     if (
