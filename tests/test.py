@@ -45,7 +45,7 @@ class Tests(unittest.TestCase):
         # self.browser.get("https://blaklinten.azurewebsites.net/")
 
     def tearDown(self):
-        self.browser.execute_script("console.clear();")
+        _ = self.browser.get_log("browser")
         self.browser.get("about:blank")
 
     def testNoErrors(self):
