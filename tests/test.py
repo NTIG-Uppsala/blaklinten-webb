@@ -45,10 +45,10 @@ class Tests(unittest.TestCase):
         # self.browser.get("https://blaklinten.azurewebsites.net/")
 
     def tearDown(self):
+        self.browser.execute_script("console.clear();")
         self.browser.get("about:blank")
 
     def testNoErrors(self):
-        time.sleep(10)
         log = self.browser.get_log("browser")
         for message in log:
             self.assertNotEqual(message["level"], "SEVERE")
