@@ -23,9 +23,11 @@ jobs:
           python-version: "3.11"
 
       - name: Create and start virtual environment
+        # python -m venv venv  creates a virtual environment
+        # source venv/bin/activate activates the virtual environment
         run: |
-          python -m venv venv # This creates a virtual environment
-          source venv/bin/activate # This activates the virtual environment
+          python -m venv venv 
+          source venv/bin/activate
 
       - name: Install dependencies
         run: pip install -r requirements.txt
@@ -37,14 +39,16 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: python-app
+          # . uploads the entire repo
+          # !venv/ excludes the virtual environment
           path: |
-            . # This uploads the entire repo
-            !venv/ # This excludes the virtual environment
+            . 
+            !venv/
 
   deploy:
     runs-on: ubuntu-latest
     needs: build
-    # gets the url from the deploy-to-webapp job output
+    # gets the deploy-to-webapp job output url and shows the url in github actions workflow
     environment:
       name: "Production"
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
