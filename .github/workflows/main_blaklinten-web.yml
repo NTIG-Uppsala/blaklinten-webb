@@ -8,13 +8,13 @@ on:
   push:
     branches:
       - main
-  workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
+      # Gets access to source code
       - uses: actions/checkout@v2
 
       - name: Set up Python version
@@ -24,8 +24,8 @@ jobs:
 
       - name: Create and start virtual environment
         run: |
-          python -m venv venv
-          source venv/bin/activate
+          python -m venv venv # This creates a virtual environment
+          source venv/bin/activate # This activates the virtual environment
 
       - name: Install dependencies
         run: pip install -r requirements.txt
@@ -33,17 +33,18 @@ jobs:
       - name: Run tests
         run: python -m unittest discover -s tests
 
-      - name: Upload artifact for deployment jobs
+      - name: Uploads Code as an artifact for deployment jobs
         uses: actions/upload-artifact@v2
         with:
           name: python-app
           path: |
-            . 
-            !venv/
+            . # This uploads the entire repo
+            !venv/ # This excludes the virtual environment
 
   deploy:
     runs-on: ubuntu-latest
     needs: build
+    # gets the url from the deploy-to-webapp job output
     environment:
       name: "Production"
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
