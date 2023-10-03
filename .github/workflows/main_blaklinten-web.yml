@@ -30,6 +30,8 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
+      - run: python -m unittest discover -s tests
+
       - name: Upload artifact for deployment jobs
         uses: actions/upload-artifact@v2
         with:
