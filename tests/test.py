@@ -1,15 +1,13 @@
-import threading
 import time
-import unittest
+from os import getcwd, path
+from unittest import TestCase, main
 
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 
-from app import app
 
-
-class Tests(unittest.TestCase):
+class Tests(TestCase):
     doNotCloseBrowser = False
     hideWindow = True
 
@@ -25,24 +23,8 @@ class Tests(unittest.TestCase):
 
         cls.browser = webdriver.Chrome(options=chr_options)
 
-        # Create a separate thread to start the Flask app
-        cls.server_thread = threading.Thread(target=cls.start_flask_app)
-        cls.server_thread.daemon = True
-        cls.server_thread.start()
-
-        # Wait for the Flask app to start
-        time.sleep(2)
-
-    @classmethod
-    def start_flask_app(cls):
-        app.run(host="localhost", port=5000)
-
     def setUp(self):
-        # use this instead of the below line if you want to test the local version
-        self.browser.get("http://localhost:5000")
-
-        # use this instead of the above line if you want to test the deployed version
-        # self.browser.get("https://blaklinten.azurewebsites.net/")
+        self.browser.get(path.join(getcwd(), "index.html"))
 
     def tearDown(self):
         _ = self.browser.get_log("browser")
@@ -209,10 +191,5 @@ class Tests(unittest.TestCase):
         self.assertIn(".svg", src)
 
 
-def tearDownClass(cls):
-    # Clean up the WebDriver session
-    cls.browser.quit()
-
-
 if __name__ == "__main__":
-    unittest.main(verbosity=2)
+    main(verbosity=2)
